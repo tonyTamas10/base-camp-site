@@ -1,5 +1,11 @@
 # Base Camp — website prototype
 
+> **Reference only.** This is the original single-file prototype, kept as the
+> visual and behavioural reference while the site is rebuilt in Next.js (see
+> [ADR 0007](../docs/decisions/0007-migration-phases.md)). Don't add features
+> here. It will be deleted once the new site reaches parity, and will remain
+> available in Git history.
+
 An interactive, single-file prototype of the website for **Base Camp**, a
 community sports club in Cluj-Napoca, Romania. Built around "the Base Camp
 Loop" — a circular year dial that doubles as the site's main navigation and
