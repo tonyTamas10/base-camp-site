@@ -1,0 +1,24 @@
+.tag {
+  display: inline-block;
+  padding: 5px 8px;
+  border-radius: var(--radius-pill);
+  font-family: var(--font-mono);
+  font-size: 9.5px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.default {
+  background: var(--color-midnight);
+  color: var(--color-warm-white);
+}
+
+.signal {
+  background: var(--color-signal);
+  color: var(--color-midnight);
+}
+
+.inverted {
+  background: var(--color-warm-white);
+  color: var(--color-midnight);
+}

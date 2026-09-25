@@ -1,0 +1,86 @@
+.button {
+  --button-fg: var(--color-warm-white);
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  min-height: var(--touch-target-primary);
+  padding: 0 22px;
+  border: 1.5px solid var(--color-warm-white);
+  border-radius: var(--radius-pill);
+  background: transparent;
+  color: var(--button-fg);
+  font-size: 15px;
+  font-weight: 600;
+  text-decoration: none;
+  white-space: nowrap;
+  transition:
+    background var(--duration-fast),
+    color var(--duration-fast),
+    border-color var(--duration-fast),
+    transform var(--duration-fast) var(--ease-release);
+}
+
+.button:hover {
+  --button-fg: var(--color-midnight);
+
+  background: var(--color-warm-white);
+}
+
+.button:active {
+  transform: scale(0.97);
+}
+
+.primary {
+  --button-fg: var(--color-midnight);
+
+  border-color: var(--color-signal);
+  background: var(--color-signal);
+}
+
+.primary:hover {
+  border-color: var(--color-signal-hover);
+  background: var(--color-signal-hover);
+}
+
+.ghost {
+  border-color: var(--color-line-strong);
+}
+
+.button:disabled,
+.button[aria-disabled='true'] {
+  opacity: 0.4;
+  pointer-events: none;
+}
+
+.button[data-loading] {
+  position: relative;
+  color: transparent;
+  opacity: 1;
+}
+
+.button[data-loading]::after {
+  content: '';
+  position: absolute;
+  width: 18px;
+  height: 18px;
+  border: 2px solid var(--button-fg);
+  border-right-color: transparent;
+  border-radius: 50%;
+  animation: spin 0.7s linear infinite;
+}
+
+.arrow {
+  transition: transform var(--duration-fast) var(--ease-release);
+}
+
+.button:hover .arrow {
+  transform: translateX(4px);
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
