@@ -21,8 +21,10 @@ small enough that newcomers aren't overwhelmed.
 - **TypeScript:** 6.0, with `strict: true` plus `noUncheckedIndexedAccess`. No
   `any` without a comment explaining why. TypeScript 7 (the native compiler) is
   out, but typescript-eslint supports only `<6.1` so far. Upgrade when it does.
-- **Linting:** ESLint with the Next.js, typescript-eslint and jsx-a11y rule
-  sets.
+- **Linting:** ESLint 9 with the Next.js, typescript-eslint and jsx-a11y rule
+  sets, plus import-direction rules from ADR 0009. ESLint 10 is out, but the
+  React, jsx-a11y and import plugins that `eslint-config-next` uses support only
+  up to 9. Upgrade when they do.
 - **Formatting:** Prettier, run on save and in CI. Formatting is never a review
   comment.
 - **Unit and component tests:** Vitest + React Testing Library. Pure logic (dial
@@ -42,6 +44,13 @@ small enough that newcomers aren't overwhelmed.
 - Most style and correctness issues are caught before review.
 - Contributors need Node 24 and pnpm installed. `CONTRIBUTING.md` covers setup.
 - CI minutes are free for public repos and generous for private ones at our scale.
+- pnpm blocks dependency install scripts by default. Each one is explicitly
+  allowed or denied in `pnpm-workspace.yaml`, which also reduces supply-chain risk.
+- The Vercel project must use the exact pnpm version in `packageManager`
+  (enable Corepack in the project settings). Verify this on the first deploy in
+  phase 3.
+- Pinned versions that are behind the latest (TypeScript 6, ESLint 9) are
+  tracked debt, not permanent choices.
 
 ## Alternatives considered
 

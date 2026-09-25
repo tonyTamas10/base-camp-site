@@ -1,0 +1,72 @@
+/*
+ * Base Camp design tokens (ADR 0005).
+ * Components use these variables, never raw values. Changing a token changes the whole site.
+ * Rationale for each value is documented on the design-system page.
+ */
+:root {
+  /* Colour: cobalt is the world, warm white is clarity, signal orange is energy. */
+  --color-cobalt: #1c2e9e;
+  --color-cobalt-deep: #16248a;
+  --color-field-low: #121f6e;
+  --color-midnight: #050a2c;
+  --color-ink: #0b1233;
+  --color-warm-white: #f7f7f2;
+  --color-paper: #f2f3f7;
+  --color-pale-blue: #c3cfff;
+  --color-slate: #4a5480;
+
+  /* Signal orange marks exactly one thing per view: selection, active state, primary action. */
+  --color-signal: #ff5b1a;
+  --color-signal-hover: #ff7a45;
+
+  /* Event accents live inside posters and card rules only, never for interaction. */
+  --color-accent-amber: #ffb23f;
+  --color-accent-mint: #7fe3c4;
+  --color-accent-rose: #ff6f91;
+
+  --color-line: rgb(247 247 242 / 22%);
+  --color-line-strong: rgb(247 247 242 / 50%);
+  --color-line-ink: rgb(11 18 51 / 14%);
+
+  /* Typography. The *-face variables are set by next/font in the root layout. */
+  --font-display: var(--font-display-face), 'Arial Narrow', impact, sans-serif;
+  --font-body: var(--font-body-face), system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --font-mono: var(--font-mono-face), ui-monospace, 'SFMono-Regular', menlo, monospace;
+
+  /* Spacing: 4px base. */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 24px;
+  --space-6: 32px;
+  --space-7: 48px;
+  --space-8: 64px;
+  --space-9: 96px;
+  --space-10: 128px;
+
+  --radius-pill: 99px;
+
+  /* Motion: acceleration, momentum, passing. */
+  --ease-release: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-sprint: cubic-bezier(0.7, 0, 0.2, 1);
+  --ease-pass: cubic-bezier(0.34, 1.3, 0.64, 1);
+  --duration-fast: 160ms;
+  --duration-medium: 320ms;
+  --duration-slow: 720ms;
+
+  /* Layout. */
+  --nav-width: 236px;
+  --axis-height: 118px;
+  --gutter: clamp(16px, 3vw, 40px);
+  --content-max-width: 1120px;
+  --touch-target: 44px;
+  --touch-target-primary: 48px;
+}
+
+@media (width < 900px) {
+  :root {
+    --nav-width: 0px;
+    --axis-height: 104px;
+  }
+}

@@ -15,17 +15,17 @@ shared. Event IDs like `mf-2025-1` are generated, not meaningful.
 
 ### Routes
 
-| Prototype | New route | Page |
-|---|---|---|
-| `#home` | `/` | Home |
-| `#events` | `/events` | Events hub, all sports |
-| `#events-<sport>` | `/events/<sport>` | Events hub, one sport |
-| `#event-<id>` | `/events/<sport>/<event-slug>` | An event, e.g. `/events/minifootball/autumn-student-cup-2025` |
-| `#register`, `#register-<id>` | `/register`, `/register?event=<slug>` | Registration form |
-| `#sponsor` | `/sponsor` | Sponsor form |
-| `#contact` | `/contact` | Contact form |
-| `#system` | `/design-system` | Design system and guidelines |
-| n/a | `/admin` | Payload admin (phase 3) |
+| Prototype                     | New route                             | Page                                                          |
+| ----------------------------- | ------------------------------------- | ------------------------------------------------------------- |
+| `#home`                       | `/`                                   | Home                                                          |
+| `#events`                     | `/events`                             | Events hub, all sports                                        |
+| `#events-<sport>`             | `/events/<sport>`                     | Events hub, one sport                                         |
+| `#event-<id>`                 | `/events/<sport>/<event-slug>`        | An event, e.g. `/events/minifootball/autumn-student-cup-2025` |
+| `#register`, `#register-<id>` | `/register`, `/register?event=<slug>` | Registration form                                             |
+| `#sponsor`                    | `/sponsor`                            | Sponsor form                                                  |
+| `#contact`                    | `/contact`                            | Contact form                                                  |
+| `#system`                     | `/design-system`                      | Design system and guidelines                                  |
+| n/a                           | `/admin`                              | Payload admin (phase 3)                                       |
 
 - Event slugs are human-readable and unique per sport. Admins can edit them, and
   old slugs redirect so shared links keep working.

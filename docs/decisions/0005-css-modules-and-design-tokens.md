@@ -23,6 +23,13 @@ it lives in one global stylesheet today, where any rule can affect any element.
   accessibility helpers (`.sr-only`, focus styles, reduced-motion rules).
 - Tokens are also exported as a typed TypeScript object for the few places that
   need them in code (canvas drawing, poster SVG generation).
+- Token names follow the design system's own vocabulary (`--color-cobalt`,
+  `--color-signal`, `--ease-sprint`) rather than the prototype's shorthand
+  (`--blue`, `--orange`, `--e-sprint`).
+- Fonts are self-hosted through `next/font`: downloaded at build time, served
+  from our domain, so visitors make no requests to Google (faster, and simpler
+  for GDPR). Google has merged "Big Shoulders Display" into **Big Shoulders**,
+  whose optical-size axis selects the display cut at large sizes.
 
 ## Consequences
 
