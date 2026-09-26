@@ -16,7 +16,33 @@ jobs:
   checks:
     name: Typecheck, lint, test, build
     runs-on: ubuntu-latest
-    timeout-minutes: 20
+    timeout-minutes: 25
+
+    # A throwaway database, built from migrations like production (ADR 0011).
+    services:
+      postgres:
+        image: postgres:17
+        env:
+          POSTGRES_USER: basecamp
+          POSTGRES_PASSWORD: basecamp
+          POSTGRES_DB: basecamp_test
+        ports: ['5432:5432']
+        options: >-
+          --health-cmd "pg_isready -U basecamp"
+          --health-interval 5s
+          --health-timeout 5s
+          --health-retries 10
+
+    env:
+      DATABASE_URI: postgres://basecamp:basecamp@localhost:5432/basecamp_test
+      PAYLOAD_SECRET: ci-only-secret
+      SITE_URL: http://localhost:3000
+      # Pins "today" so event statuses match the test data.
+      SITE_TODAY: '2026-09-24'
+      # Test-only admin for the publishing test; exists only in this throwaway database.
+      SEED_ADMIN_EMAIL: admin@basecamp.test
+      SEED_ADMIN_PASSWORD: ci-only-password
+
     steps:
       - uses: actions/checkout@v5
 
@@ -33,6 +59,22 @@ jobs:
       - run: pnpm lint
       - run: pnpm format:check
       - run: pnpm test
+
+      - name: Apply migrations and seed sample content
+        run: |
+          pnpm migrate
+          pnpm seed
+
+      # Fails if the collections changed without a migration (run `pnpm migrate:create <name>`).
+      - name: Check migrations match the schema
+        run: |
+          pnpm payload migrate:create schema-drift --skip-empty
+          if [ -n "$(git status --porcelain src/migrations)" ]; then
+            echo "::error::The CMS schema changed but no migration was committed. Run: pnpm migrate:create <name>"
+            git status --porcelain src/migrations
+            exit 1
+          fi
+
       - run: pnpm build
 
       - name: Install Playwright browser

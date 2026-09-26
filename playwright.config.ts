@@ -25,5 +25,7 @@ export default defineConfig({
     port: PORT,
     reuseExistingServer: !isCI,
     timeout: 120_000,
+    // Pins "today" so event statuses (past, this week, upcoming) match the test data.
+    env: { SITE_TODAY: '2026-09-24' },
   },
 });

@@ -1,4 +1,13 @@
+# Dependency install scripts are blocked unless listed here (ADR 0008).
 allowBuilds:
   '@parcel/watcher': false
   '@swc/core': false
   unrs-resolver: false
+  # Verifies its platform binary.
+  esbuild: true
+  # Recreates symlinks between the bundled Postgres libraries (local development database).
+  '@embedded-postgres/darwin-arm64': true
+  '@embedded-postgres/darwin-x64': true
+  '@embedded-postgres/linux-x64': true
+  '@embedded-postgres/linux-arm64': true
+  '@embedded-postgres/windows-x64': true

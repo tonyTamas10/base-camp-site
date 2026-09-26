@@ -122,7 +122,10 @@ export function generateSampleDataset(): SampleDataset {
       competition,
       modules: [...DEFAULT_EVENT_MODULES[draft.sport.kind]],
       partners: partners.slice(0, PARTNERS_PER_EVENT),
-      gallerySeeds: Array.from({ length: GALLERY_TILES }, (_, i) => `${draft.id}-${i}`),
+      gallery: Array.from({ length: GALLERY_TILES }, (_, i) => ({
+        kind: 'placeholder' as const,
+        seed: `${draft.id}-${i}`,
+      })),
     };
   });
 

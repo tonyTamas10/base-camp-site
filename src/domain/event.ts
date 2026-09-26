@@ -101,9 +101,13 @@ export interface EventDetail extends EventSummary {
   competition: Competition;
   modules: EventModuleType[];
   partners: Partner[];
-  /** Seeds for placeholder gallery tiles until real photos are uploaded. */
-  gallerySeeds: string[];
+  gallery: GalleryItem[];
 }
+
+/** A gallery photo, or (for sample content) a seed for a generated placeholder. */
+export type GalleryItem =
+  | { kind: 'image'; url: string; alt: string; width: number; height: number }
+  | { kind: 'placeholder'; seed: string };
 
 /** An event within the next seven days counts as "this week". */
 export const THIS_WEEK_DAYS = 7;

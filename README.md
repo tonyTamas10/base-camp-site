@@ -19,14 +19,18 @@ history (commit `3add57f`) if you ever need the reference.
 
 ## Quick start
 
-Requires Node.js 24+ and pnpm 12 (see [CONTRIBUTING.md](CONTRIBUTING.md#setup)).
+Requires Node.js 24+ and pnpm 12. Full setup, including the local database and admin, is in
+[CONTRIBUTING.md](CONTRIBUTING.md#setup). The short version:
 
 ```bash
 pnpm install
-pnpm dev
+cp .env.example .env.local   # then set PAYLOAD_SECRET
+pnpm db                      # in its own terminal
+pnpm seed && pnpm dev
 ```
 
-Then open http://localhost:3000.
+The site is at http://localhost:3000 and the admin at http://localhost:3000/admin. Without a
+database (no `DATABASE_URI`), the site runs on generated sample content.
 
 ## Scripts
 
@@ -38,12 +42,15 @@ Then open http://localhost:3000.
 | `pnpm test` / `pnpm test:watch` | Unit and component tests (Vitest)                                |
 | `pnpm test:e2e`                 | End-to-end and accessibility tests (Playwright)                  |
 | `pnpm lint:fix` / `pnpm format` | Auto-fix lint issues / format all files                          |
+| `pnpm db`                       | Run the local Postgres database                                  |
+| `pnpm seed` / `pnpm seed:reset` | Load the sample content into the database                        |
+| `pnpm migrate:create <name>`    | Create a database migration after changing the CMS schema        |
 
 ## Stack
 
-Next.js (App Router) · React · TypeScript · CSS Modules with design tokens ·
-next-intl · Vitest · Playwright. Payload CMS, Postgres (Neon) and Vercel follow
-in phase 3.
+Next.js (App Router) · React · TypeScript · CSS Modules with design tokens · next-intl ·
+Payload CMS · Postgres · Vitest · Playwright. Hosting is planned on Vercel with Neon
+([ADR 0004](docs/decisions/0004-hosting-vercel-neon.md)).
 
 ## Documentation
 
@@ -63,5 +70,8 @@ in phase 3.
 | `src/features/forms/`  | Registration, sponsor and contact forms.                                                               |
 | `src/domain/`          | Types and pure rules: events, standings, rankings, dates.                                              |
 | `src/lib/data/`        | Data-access layer, the only code that knows where content comes from.                                  |
-| `src/lib/forms/`       | Form validation and server actions.                                                                    |
+| `src/lib/forms/`       | Form validation, server actions and delivery to the admin's Inbox.                                     |
+| `src/cms/`             | Payload schema: collections, page-section blocks, access rules.                                        |
+| `src/migrations/`      | Database migrations (generated, committed).                                                            |
+| `scripts/`             | Local database, seeding and migration helpers.                                                         |
 | `src/styles/`          | Design tokens, fonts, global styles.                                                                   |

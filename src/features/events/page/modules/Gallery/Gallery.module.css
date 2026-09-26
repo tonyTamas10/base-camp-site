@@ -90,3 +90,7 @@
     grid-row: span 2;
   }
 }
+
+.photo {
+  object-fit: cover;
+}

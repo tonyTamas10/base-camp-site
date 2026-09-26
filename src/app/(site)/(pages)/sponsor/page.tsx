@@ -4,7 +4,7 @@ import { getTranslations } from 'next-intl/server';
 import { PageHeader } from '@/components/layout/PageHeader';
 import { SiteFooter } from '@/components/layout/SiteFooter';
 import { SponsorForm } from '@/features/forms';
-import { isUsingSampleData } from '@/lib/data';
+import { areSubmissionsStored } from '@/lib/data';
 import { submitSponsorEnquiry } from '@/lib/forms/actions';
 
 import styles from '../forms.module.css';
@@ -17,7 +17,10 @@ export async function generateMetadata(): Promise<Metadata> {
 }
 
 export default async function SponsorPage() {
-  const [t, isPrototype] = await Promise.all([getTranslations('sponsor'), isUsingSampleData()]);
+  const [t, submissionsStored] = await Promise.all([
+    getTranslations('sponsor'),
+    areSubmissionsStored(),
+  ]);
 
   return (
     <>
@@ -40,7 +43,7 @@ export default async function SponsorPage() {
             </li>
           ))}
         </ul>
-        <SponsorForm action={submitSponsorEnquiry} isPrototype={isPrototype} />
+        <SponsorForm action={submitSponsorEnquiry} isPrototype={!submissionsStored} />
       </div>
       <SiteFooter />
     </>

@@ -31,7 +31,7 @@ export async function submitRegistration(_: FormState, formData: FormData): Prom
   );
   if (!event) return { status: 'invalid', errors: { event: 'invalidChoice' }, values };
 
-  await deliverSubmission({ kind: 'registration', data: result.value });
+  await deliverSubmission({ kind: 'registration', data: result.value, eventId: event.id });
   return { status: 'sent', details: { name: result.value.name, event: event.name } };
 }
 

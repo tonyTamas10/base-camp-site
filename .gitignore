@@ -24,3 +24,9 @@ blob-report/
 .DS_Store
 *.pem
 .idea/
+
+# local development database (pnpm db)
+.postgres/
+
+# uploads in local development
+media/

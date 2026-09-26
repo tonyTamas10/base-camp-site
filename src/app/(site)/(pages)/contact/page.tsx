@@ -4,9 +4,8 @@ import { getTranslations } from 'next-intl/server';
 import { PageHeader } from '@/components/layout/PageHeader';
 import { SiteFooter } from '@/components/layout/SiteFooter';
 import { ContactForm, CopyEmail } from '@/features/forms';
-import { isUsingSampleData } from '@/lib/data';
+import { getContactEmail, areSubmissionsStored } from '@/lib/data';
 import { submitContactMessage } from '@/lib/forms/actions';
-import { siteConfig } from '@/lib/site';
 
 import styles from '../forms.module.css';
 
@@ -16,7 +15,11 @@ export async function generateMetadata(): Promise<Metadata> {
 }
 
 export default async function ContactPage() {
-  const [t, isPrototype] = await Promise.all([getTranslations('contact'), isUsingSampleData()]);
+  const [t, submissionsStored, contactEmail] = await Promise.all([
+    getTranslations('contact'),
+    areSubmissionsStored(),
+    getContactEmail(),
+  ]);
 
   return (
     <>
@@ -24,9 +27,9 @@ export default async function ContactPage() {
       <div className={`${styles.body} ${styles.twoColumns}`}>
         <div className={styles.aside}>
           <span className={styles.asideLabel}>{t('emailLabel')}</span>
-          <CopyEmail address={siteConfig.contactEmail} />
+          <CopyEmail address={contactEmail} />
         </div>
-        <ContactForm action={submitContactMessage} isPrototype={isPrototype} />
+        <ContactForm action={submitContactMessage} isPrototype={!submissionsStored} />
       </div>
       <SiteFooter />
     </>
