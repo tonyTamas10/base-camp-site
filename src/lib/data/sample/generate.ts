@@ -20,13 +20,13 @@ import {
 import { addDays, type IsoDate } from '@/domain/dates';
 import {
   compareByDate,
+  DEFAULT_EVENT_MODULES,
   getEventStatus,
   type EventDetail,
-  type EventModuleType,
   type ScheduleDay,
 } from '@/domain/event';
 import type { Partner } from '@/domain/partner';
-import type { Sport, SportKind } from '@/domain/sport';
+import type { Sport } from '@/domain/sport';
 import { createRng, pick, shuffle, type Rng } from '@/lib/random';
 import { slugify } from '@/lib/slugify';
 
@@ -51,37 +51,6 @@ export interface SampleDataset {
   events: EventDetail[];
   partners: Partner[];
 }
-
-const DEFAULT_MODULES: Record<SportKind, EventModuleType[]> = {
-  team: [
-    'story',
-    'stats',
-    'schedule',
-    'teams',
-    'groups',
-    'bracket',
-    'results',
-    'players',
-    'venue',
-    'gallery',
-    'partners',
-    'registration',
-    'related',
-  ],
-  track: [
-    'story',
-    'stats',
-    'schedule',
-    'heats',
-    'rankings',
-    'records',
-    'venue',
-    'gallery',
-    'partners',
-    'registration',
-    'related',
-  ],
-};
 
 const PARTNERS_PER_EVENT = 6;
 const GALLERY_TILES = 6;
@@ -151,7 +120,7 @@ export function generateSampleDataset(): SampleDataset {
       venueSurface: draft.sport.kind === 'team' ? 'Artificial turf' : 'Synthetic track',
       schedule: scheduleFor(competition, draft.date),
       competition,
-      modules: DEFAULT_MODULES[draft.sport.kind],
+      modules: [...DEFAULT_EVENT_MODULES[draft.sport.kind]],
       partners: partners.slice(0, PARTNERS_PER_EVENT),
       gallerySeeds: Array.from({ length: GALLERY_TILES }, (_, i) => `${draft.id}-${i}`),
     };

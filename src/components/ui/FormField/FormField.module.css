@@ -1,0 +1,51 @@
+.field {
+  display: grid;
+  gap: 6px;
+}
+
+.label {
+  color: var(--color-pale-blue);
+  font-family: var(--font-mono);
+  font-size: 10.5px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.hint {
+  color: var(--color-pale-blue);
+  font-size: 13px;
+}
+
+.control {
+  min-height: 52px;
+  padding: 12px 16px;
+  border: 1.5px solid var(--color-line-strong);
+  border-radius: 12px;
+  background: rgb(5 10 44 / 30%);
+  color: var(--color-warm-white);
+  font-size: 16px;
+}
+
+.control:focus {
+  border-color: var(--color-signal);
+  outline: none;
+  box-shadow: 0 0 0 3px rgb(255 91 26 / 25%);
+}
+
+.control[aria-invalid='true'] {
+  border-color: var(--color-signal);
+}
+
+.textarea {
+  min-height: 120px;
+  resize: vertical;
+}
+
+.error {
+  color: var(--color-signal-hover);
+  font-size: 13px;
+}
+
+.error:empty {
+  display: none;
+}

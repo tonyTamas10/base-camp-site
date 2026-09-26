@@ -66,19 +66,32 @@
   },
   "register": {
     "eyebrow": "Register",
-    "title": "Pick your next line on the Loop"
+    "titleFirst": "Pick your next",
+    "titleSecond": "line on the Loop"
   },
   "sponsor": {
     "eyebrow": "Become a sponsor",
-    "title": "Back the people who show up"
+    "titleFirst": "Back the people",
+    "titleSecond": "who show up",
+    "lede": "Your mark travels with the Loop.",
+    "ways": {
+      "event": "Event partner",
+      "season": "Season partner",
+      "kit": "Kit & equipment",
+      "venue": "Venue partner"
+    }
   },
   "contact": {
     "eyebrow": "Contact",
-    "title": "Say hello"
+    "title": "Say hello",
+    "emailLabel": "Email"
   },
   "designSystem": {
-    "eyebrow": "Guidelines · v0.1 prototype",
-    "title": "Base Camp design system"
+    "eyebrow": "Guidelines · v0.1",
+    "titlePlain": "Base Camp design system",
+    "lede": "One environment, one line, many sports. These rules keep every new event recognisably Base Camp.",
+    "playMotion": "Play the three curves",
+    "backToLoop": "Back to the Loop"
   },
   "notFound": {
     "eyebrow": "404",
@@ -238,6 +251,54 @@
     },
     "related": {
       "next": "Next"
+    }
+  },
+  "forms": {
+    "honeypot": "Leave this field empty",
+    "sentTitle": "Got it",
+    "prototypeNote": "This is a prototype, so nothing was sent. {outcome}",
+    "errors": {
+      "required": "Add this to continue.",
+      "invalidEmail": "Use an email like name@example.com.",
+      "tooLong": "This is too long.",
+      "invalidChoice": "Choose one of the options."
+    },
+    "registration": {
+      "event": "Event",
+      "name": "Full name",
+      "email": "Email",
+      "team": "Team name (team events, optional)",
+      "submit": "Send registration",
+      "noOpenEvents": "No events are open for registration right now. New dates join the Loop soon.",
+      "sentPrototype": "In the live site, {name} would get a confirmation for {event}.",
+      "sent": "Thanks, {name}. Your place for {event} is saved; we'll email you the details."
+    },
+    "sponsor": {
+      "organisation": "Organisation",
+      "email": "Contact email",
+      "interest": "What would you like to support?",
+      "message": "Message",
+      "submit": "Start the conversation",
+      "interests": {
+        "event": "Event partner",
+        "season": "Season partner",
+        "kit": "Kit & equipment",
+        "venue": "Venue partner",
+        "unsure": "Not sure yet"
+      },
+      "sentPrototype": "In the live site, the Base Camp team would reply by email.",
+      "sent": "Thanks. The Base Camp team will reply by email."
+    },
+    "contact": {
+      "name": "Name",
+      "email": "Email",
+      "message": "Message",
+      "submit": "Send message",
+      "copy": "Copy",
+      "copied": "Copied",
+      "selected": "Selected",
+      "sentPrototype": "In the live site, your message would reach the Base Camp team.",
+      "sent": "Thanks. We'll get back to you by email."
     }
   }
 }

@@ -1,6 +1,7 @@
 import type { Competition } from './competition';
 import { daysBetween, type IsoDate } from './dates';
 import type { Partner } from './partner';
+import type { SportKind } from './sport';
 
 /** Event accents live inside posters and card rules only; signal orange stays reserved for interaction. */
 export type EventAccent = 'signal' | 'amber' | 'pale-blue' | 'mint' | 'rose';
@@ -27,24 +28,59 @@ export interface EventSummary {
   status: EventStatus;
 }
 
-/** The ordered sections of an event page. Editors choose which appear (Payload blocks in phase 3). */
-export type EventModuleType =
-  | 'story'
-  | 'stats'
-  | 'schedule'
-  | 'teams'
-  | 'groups'
-  | 'bracket'
-  | 'results'
-  | 'players'
-  | 'heats'
-  | 'rankings'
-  | 'records'
-  | 'venue'
-  | 'gallery'
-  | 'partners'
-  | 'registration'
-  | 'related';
+/** Every section an event page can contain (Payload blocks in phase 3). */
+export const EVENT_MODULE_TYPES = [
+  'story',
+  'stats',
+  'schedule',
+  'teams',
+  'groups',
+  'bracket',
+  'results',
+  'players',
+  'heats',
+  'rankings',
+  'records',
+  'venue',
+  'gallery',
+  'partners',
+  'registration',
+  'related',
+] as const;
+
+export type EventModuleType = (typeof EVENT_MODULE_TYPES)[number];
+
+/** The modules a new event starts with, per kind of sport. Editors can reorder, add and remove. */
+export const DEFAULT_EVENT_MODULES: Record<SportKind, readonly EventModuleType[]> = {
+  team: [
+    'story',
+    'stats',
+    'schedule',
+    'teams',
+    'groups',
+    'bracket',
+    'results',
+    'players',
+    'venue',
+    'gallery',
+    'partners',
+    'registration',
+    'related',
+  ],
+  track: [
+    'story',
+    'stats',
+    'schedule',
+    'heats',
+    'rankings',
+    'records',
+    'venue',
+    'gallery',
+    'partners',
+    'registration',
+    'related',
+  ],
+};
 
 export interface ScheduleSlot {
   time: string;
