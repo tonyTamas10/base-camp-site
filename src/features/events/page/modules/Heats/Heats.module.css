@@ -1,0 +1,83 @@
+.heats {
+  display: grid;
+  gap: 28px;
+}
+
+.heatTitle {
+  margin: 0 0 8px;
+  font-family: var(--font-display);
+  font-size: 26px;
+  text-transform: uppercase;
+}
+
+.lanes {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
+}
+
+.lane td {
+  height: 40px;
+  padding: 0 6px;
+  border-top: 1px solid var(--section-line);
+}
+
+.laneNumber {
+  width: 36px;
+  color: var(--color-pale-blue);
+  font-family: var(--font-display);
+  font-size: 22px;
+  font-weight: 900;
+  text-align: center;
+}
+
+.lane td:nth-child(2) {
+  width: 180px;
+}
+
+/* The lane itself, with a bar showing how close each time was to the fastest. */
+.track {
+  position: relative;
+  background: repeating-linear-gradient(90deg, transparent 0 9.9%, var(--section-line) 9.9% 10%);
+}
+
+.runner {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  height: 10px;
+  margin-top: -5px;
+  border-radius: 9px;
+  background: var(--color-warm-white);
+  transition: width 1.2s var(--ease-sprint);
+}
+
+.winner .runner {
+  background: var(--color-signal);
+}
+
+.heat[data-reveal='pending'] .runner {
+  width: 0 !important;
+}
+
+.time {
+  width: 72px;
+  font-family: var(--font-mono);
+  font-variant-numeric: tabular-nums;
+  text-align: right;
+}
+
+.empty {
+  color: var(--color-pale-blue);
+  font-style: italic;
+}
+
+@media (width < 900px) {
+  .track {
+    display: none;
+  }
+
+  .lane td:nth-child(2) {
+    width: auto;
+  }
+}

@@ -16,6 +16,7 @@ export const colors = {
   slate: '#4A5480',
   signal: '#FF5B1A',
   signalHover: '#FF7A45',
+  signalDeep: '#D1450F',
   accentAmber: '#FFB23F',
   accentMint: '#7FE3C4',
   accentRose: '#FF6F91',

@@ -1,0 +1,111 @@
+.rail {
+  position: fixed;
+  top: 50%;
+  right: 22px;
+  z-index: 20;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  transform: translateY(-50%);
+}
+
+.line,
+.fill {
+  position: absolute;
+  top: 6px;
+  right: 6px;
+  width: 1px;
+}
+
+.line {
+  bottom: 6px;
+  background: var(--color-line-strong);
+}
+
+.fill {
+  right: 5.5px;
+  width: 2px;
+  max-height: calc(100% - 12px);
+  background: var(--color-signal);
+}
+
+.marker {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 10px;
+  height: 28px;
+  text-decoration: none;
+}
+
+.marker i {
+  width: 13px;
+  height: 13px;
+  border: 1.5px solid var(--color-warm-white);
+  border-radius: 50%;
+  background: var(--color-midnight);
+  transition: all var(--duration-fast);
+}
+
+.active i {
+  border-color: var(--color-signal);
+  background: var(--color-signal);
+}
+
+/* Section names appear on hover, focus, and for the current section. */
+.marker span {
+  padding: 4px 8px;
+  border-radius: 6px;
+  background: var(--color-midnight);
+  color: var(--color-warm-white);
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  opacity: 0;
+  transform: translateX(6px);
+  transition: all var(--duration-fast);
+  pointer-events: none;
+}
+
+.marker:hover span,
+.marker:focus-visible span,
+.active span {
+  opacity: 1;
+  transform: none;
+}
+
+.onPaper .marker i {
+  border-color: var(--color-ink);
+  background: var(--color-paper);
+}
+
+.onPaper .active i {
+  border-color: var(--color-signal);
+  background: var(--color-signal);
+}
+
+.onPaper .line {
+  background: var(--color-line-ink);
+}
+
+.topProgress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 40;
+  display: none;
+  height: 3px;
+  background: var(--color-signal);
+}
+
+@media (width < 1100px) {
+  .rail {
+    display: none;
+  }
+
+  .topProgress {
+    display: block;
+  }
+}

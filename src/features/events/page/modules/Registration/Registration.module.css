@@ -1,0 +1,28 @@
+.band {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: center;
+  gap: 24px;
+  padding: clamp(20px, 4vw, 40px);
+  border: 1.5px solid var(--color-line-strong);
+  border-radius: 20px;
+}
+
+.title {
+  margin: 0 0 8px;
+  font-family: var(--font-display);
+  font-size: clamp(32px, 4vw, 52px);
+  line-height: 0.95;
+  text-transform: uppercase;
+}
+
+.next {
+  max-width: 52ch;
+  color: var(--color-pale-blue);
+}
+
+@media (width < 900px) {
+  .band {
+    grid-template-columns: 1fr;
+  }
+}

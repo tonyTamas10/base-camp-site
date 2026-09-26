@@ -117,5 +117,127 @@
     "close": "Close deck",
     "emptyTitle": "No events in {year}",
     "emptyBody": "The Loop keeps going. Try a neighbouring year."
+  },
+  "eventPage": {
+    "participants": "{count, plural, one {# participant} other {# participants}}",
+    "seeResults": "See the results",
+    "register": "Register",
+    "railLabel": "Event story progress",
+    "modules": {
+      "story": "Story",
+      "stats": "Numbers",
+      "schedule": "Schedule",
+      "teams": "Teams",
+      "groups": "Groups",
+      "bracket": "Bracket",
+      "results": "Results",
+      "players": "Players",
+      "heats": "Heats & lanes",
+      "rankings": "Rankings",
+      "records": "Records",
+      "venue": "Venue",
+      "gallery": "Gallery",
+      "partners": "Partners",
+      "registration": "Registration",
+      "related": "Next on the Loop"
+    },
+    "eyebrow": {
+      "story": "The story",
+      "stats": "By the numbers",
+      "schedule": "Schedule",
+      "teams": "Teams",
+      "groups": "Group tables",
+      "bracket": "Knockouts",
+      "results": "All {count} results",
+      "players": "Top scorers",
+      "heats": "Heats · {distance}",
+      "rankings": "Rankings",
+      "records": "Records",
+      "venue": "Venue",
+      "gallery": "Photos & video",
+      "partners": "Sponsors & partners",
+      "related": "Next on the Loop"
+    },
+    "stats": {
+      "teams": "Teams",
+      "players": "Players",
+      "matches": "Matches",
+      "goals": "Goals",
+      "athletes": "Athletes",
+      "heats": "Heats",
+      "lanes": "Lanes",
+      "fastest": "Fastest {distance} (s)"
+    },
+    "groups": {
+      "caption": "Group {group}",
+      "rank": "#",
+      "team": "Team",
+      "goalDifference": "GD",
+      "goalDifferenceFull": "Goal difference",
+      "points": "Pts",
+      "pointsFull": "Points"
+    },
+    "bracket": {
+      "semiFinals": "Semi-finals",
+      "final": "Final",
+      "thirdPlace": "3rd place",
+      "penalties": "(p)",
+      "penaltiesFull": "won on penalties"
+    },
+    "results": {
+      "group": "Group {group}",
+      "round": "R{round}",
+      "penalties": "pens",
+      "stage": {
+        "semi-final": "Semi-final",
+        "third-place": "3rd place",
+        "final": "Final",
+        "group": "Group"
+      }
+    },
+    "players": {
+      "goals": "{count, plural, one {# goal} other {# goals}}"
+    },
+    "heats": {
+      "heat": "Heat {number}",
+      "more": "{count, plural, one {# more heat} other {# more heats}}",
+      "lane": "Lane",
+      "athlete": "Athlete",
+      "time": "Time (s)",
+      "emptyLane": "Empty lane"
+    },
+    "rankings": {
+      "rank": "#",
+      "athlete": "Athlete",
+      "club": "Club",
+      "heat": "Heat",
+      "lane": "Lane",
+      "time": "Time"
+    },
+    "records": {
+      "editionBest": "Edition best · {name}",
+      "closestFinish": "Closest finish (s) · heat {heat}",
+      "clubRecord": "Base Camp record · not yet recorded",
+      "distance": "Distance"
+    },
+    "venue": {
+      "city": "City",
+      "surface": "Surface",
+      "mapLabel": "Illustrative map of {venue}, not to scale",
+      "mapNote": "ILLUSTRATIVE · NOT TO SCALE"
+    },
+    "gallery": {
+      "playVideo": "Play video (placeholder)"
+    },
+    "registration": {
+      "open": "Registration open",
+      "finished": "Finished",
+      "next": "Next: {name}, {date}",
+      "nextToBeAnnounced": "Next edition to be announced",
+      "register": "Register"
+    },
+    "related": {
+      "next": "Next"
+    }
   }
 }

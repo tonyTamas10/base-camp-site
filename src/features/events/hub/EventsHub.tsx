@@ -10,7 +10,8 @@ import { SegmentedControl } from '@/components/ui/SegmentedControl';
 import { parseIsoDate } from '@/domain/dates';
 import type { EventTimeFilter } from '@/domain/event';
 import { FUTURE_SPORTS_SLUG } from '@/domain/sport';
-import { DeckEmptyState, EventDeck, eventHref, type DeckControls } from '@/features/deck';
+import { DeckEmptyState, EventDeck, type DeckControls } from '@/features/deck';
+import { eventHref } from '@/lib/routes';
 import { useLoop, useSportLabel } from '@/features/loop';
 import { dateFormats } from '@/lib/format/dates';
 

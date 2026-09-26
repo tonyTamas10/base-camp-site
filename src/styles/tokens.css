@@ -18,6 +18,8 @@
   /* Signal orange marks exactly one thing per view: selection, active state, primary action. */
   --color-signal: #ff5b1a;
   --color-signal-hover: #ff7a45;
+  /* Signal orange for large text on light paper, where the standard orange falls below 3:1. */
+  --color-signal-deep: #d1450f;
 
   /* Event accents live inside posters and card rules only, never for interaction. */
   --color-accent-amber: #ffb23f;

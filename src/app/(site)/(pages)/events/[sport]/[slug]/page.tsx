@@ -1,9 +1,14 @@
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 
-import { PageHeader } from '@/components/layout/PageHeader';
-import { SiteFooter } from '@/components/layout/SiteFooter';
-import { getEvent, getEventRouteParams } from '@/lib/data';
+import { EventPage } from '@/features/events';
+import {
+  getEvent,
+  getEventRouteParams,
+  getNextOpenEvent,
+  getRelatedEvents,
+  getSports,
+} from '@/lib/data';
 
 export async function generateStaticParams() {
   return getEventRouteParams();
@@ -14,18 +19,22 @@ export async function generateMetadata({
 }: PageProps<'/events/[sport]/[slug]'>): Promise<Metadata> {
   const { sport, slug } = await params;
   const event = await getEvent(sport, slug);
-  return event ? { title: `${event.name} ${event.year}` } : {};
+  if (!event) return {};
+  const title = `${event.name} ${event.year}`;
+  const description = `${event.story.pullQuote} ${event.story.pullQuoteEmphasis} ${event.venue}, ${event.city}.`;
+  return { title, description, openGraph: { title, description, type: 'website' } };
 }
 
-export default async function EventPage({ params }: PageProps<'/events/[sport]/[slug]'>) {
+export default async function EventRoute({ params }: PageProps<'/events/[sport]/[slug]'>) {
   const { sport, slug } = await params;
   const event = await getEvent(sport, slug);
   if (!event) notFound();
 
-  return (
-    <>
-      <PageHeader eyebrow={`${event.year} · ${event.venue}`} title={event.name} />
-      <SiteFooter />
-    </>
-  );
+  const [sports, related, nextOpen] = await Promise.all([
+    getSports(),
+    getRelatedEvents(event),
+    getNextOpenEvent(event),
+  ]);
+
+  return <EventPage event={event} sports={sports} related={related} nextOpen={nextOpen} />;
 }

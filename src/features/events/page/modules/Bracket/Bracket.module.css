@@ -1,0 +1,78 @@
+.bracket {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  align-items: center;
+  gap: clamp(12px, 3vw, 40px);
+}
+
+.column {
+  display: grid;
+  gap: 18px;
+}
+
+.stage {
+  margin: 0 0 4px;
+  color: var(--section-muted);
+  font-family: var(--font-mono);
+  font-size: 10px;
+  font-weight: 400;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.match {
+  overflow: hidden;
+  border: 1px solid var(--color-line-strong);
+  border-radius: 12px;
+  background: rgb(5 10 44 / 35%);
+}
+
+.final {
+  border: 2px solid var(--color-signal);
+}
+
+.side {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  padding: 11px 14px;
+  font-weight: 600;
+  transition:
+    transform 0.7s var(--ease-pass),
+    opacity 0.5s;
+}
+
+.side + .side {
+  border-top: 1px solid var(--color-line);
+}
+
+.winner {
+  background: var(--color-warm-white);
+  color: var(--color-midnight);
+}
+
+.final .winner {
+  background: var(--color-signal);
+}
+
+.score {
+  font-family: var(--font-mono);
+  font-variant-numeric: tabular-nums;
+}
+
+.pens {
+  margin-left: 4px;
+  text-decoration: none;
+}
+
+/* Teams pass into the bracket as it is revealed. */
+.bracket[data-reveal='pending'] .side {
+  opacity: 0;
+  transform: translateX(-40px);
+}
+
+@media (width < 900px) {
+  .bracket {
+    grid-template-columns: 1fr;
+  }
+}

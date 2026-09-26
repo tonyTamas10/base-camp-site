@@ -1,0 +1,82 @@
+.players ol {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.row {
+  display: grid;
+  grid-template-columns: 48px 1fr 1fr 140px 64px;
+  align-items: center;
+  gap: 16px;
+  padding: 14px 0;
+  border-top: 1px solid var(--section-line);
+  transition:
+    filter 0.7s var(--ease-release),
+    transform 0.7s var(--ease-release),
+    opacity 0.7s;
+}
+
+.players[data-reveal='pending'] .row {
+  opacity: 0.3;
+  filter: blur(6px);
+  transform: scaleY(0.6);
+}
+
+.rank {
+  color: var(--color-pale-blue);
+  font-family: var(--font-display);
+  font-size: 30px;
+  font-weight: 900;
+  line-height: 1;
+}
+
+.row:first-child .rank {
+  color: var(--color-signal);
+}
+
+.name {
+  font-size: 17px;
+  font-weight: 700;
+}
+
+.team {
+  color: var(--color-pale-blue);
+  font-size: 14px;
+}
+
+.bar {
+  height: 6px;
+  overflow: hidden;
+  border-radius: 9px;
+  background: var(--color-line);
+}
+
+.bar i {
+  display: block;
+  height: 100%;
+  background: var(--color-warm-white);
+}
+
+.row:first-child .bar i {
+  background: var(--color-signal);
+}
+
+.goals {
+  font-family: var(--font-mono);
+  font-size: 13px;
+  font-variant-numeric: tabular-nums;
+  text-align: right;
+}
+
+@media (width < 900px) {
+  .row {
+    grid-template-columns: 36px 1fr 64px;
+    gap: 10px;
+  }
+
+  .team,
+  .bar {
+    display: none;
+  }
+}

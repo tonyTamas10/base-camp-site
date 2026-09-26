@@ -1,0 +1,39 @@
+.section {
+  position: relative;
+  padding-block: clamp(64px, 10vw, 140px);
+  scroll-margin-top: 24px;
+}
+
+.inner {
+  max-width: var(--content-max-width);
+  margin: 0 auto;
+  padding-inline: var(--gutter);
+}
+
+/* Section-level colour contexts; children read these variables instead of fixed colours. */
+.cobalt {
+  --section-line: var(--color-line);
+  --section-muted: var(--color-pale-blue);
+}
+
+.paper {
+  --eyebrow-color: var(--color-slate);
+  --section-line: var(--color-line-ink);
+  --section-muted: var(--color-slate);
+
+  background: var(--color-paper);
+  color: var(--color-ink);
+}
+
+.midnight {
+  --section-line: var(--color-line);
+  --section-muted: var(--color-pale-blue);
+
+  background: var(--color-midnight);
+}
+
+@media (width < 900px) {
+  .section {
+    scroll-margin-top: 72px;
+  }
+}
