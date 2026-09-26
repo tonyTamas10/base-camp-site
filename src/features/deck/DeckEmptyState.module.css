@@ -1,0 +1,36 @@
+.empty {
+  display: grid;
+  justify-items: center;
+  gap: 14px;
+  max-width: 34ch;
+}
+
+.ring {
+  display: grid;
+  place-items: center;
+  width: 88px;
+  height: 88px;
+  border: 1.5px dashed var(--color-line-strong);
+  border-radius: 50%;
+  font-family: var(--font-display);
+  font-size: 34px;
+  font-weight: 800;
+}
+
+.title {
+  font-family: var(--font-display);
+  font-size: 30px;
+  line-height: 1;
+  text-transform: uppercase;
+}
+
+.body {
+  color: var(--color-pale-blue);
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 8px;
+}

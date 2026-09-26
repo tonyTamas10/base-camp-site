@@ -1,6 +1,6 @@
 import { getTranslations } from 'next-intl/server';
 
-import { HomeHero } from '@/features/home';
+import { CoveredByDeck, HomeDeck, HomeHero } from '@/features/home';
 import { SponsorRibbon } from '@/features/sponsors';
 import { getHeroPosterEvents, getPartners, getSports } from '@/lib/data';
 
@@ -15,13 +15,16 @@ export default async function HomePage() {
 
   return (
     <>
-      <SponsorRibbon partners={partners} label={t('partnersLabel')} />
-      <HomeHero
-        posterEvents={posterEvents.map((event) => ({
-          event,
-          geometry: geometryOf(event.sportSlug),
-        }))}
-      />
+      <CoveredByDeck>
+        <SponsorRibbon partners={partners} label={t('partnersLabel')} />
+        <HomeHero
+          posterEvents={posterEvents.map((event) => ({
+            event,
+            geometry: geometryOf(event.sportSlug),
+          }))}
+        />
+      </CoveredByDeck>
+      <HomeDeck />
     </>
   );
 }

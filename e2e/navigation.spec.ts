@@ -13,7 +13,7 @@ test.describe('site navigation', () => {
 
     await openMenu();
     await nav.getByRole('link', { name: 'Sprints' }).click();
-    await expect(page).toHaveURL('/events/sprints');
+    await expect(page).toHaveURL(/\/events\/sprints(\?|$)/);
     await expect(page.getByRole('heading', { level: 1 })).toHaveText('Sprints');
 
     await openMenu();

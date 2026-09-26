@@ -1,0 +1,4 @@
+/* Layout-neutral wrapper: its children position themselves as if it weren't there. */
+.contents {
+  display: contents;
+}

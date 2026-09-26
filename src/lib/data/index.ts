@@ -16,7 +16,7 @@ import {
 import type { Partner } from '@/domain/partner';
 import type { Sport } from '@/domain/sport';
 
-import { HERO_POSTER_EVENT_IDS, SHOWCASE_EVENT_ID } from './sample/content';
+import { HERO_POSTER_EVENT_IDS, SAMPLE_DEFAULT_YEAR, SHOWCASE_EVENT_ID } from './sample/content';
 import { generateSampleDataset, type SampleDataset } from './sample/generate';
 
 let dataset: SampleDataset | undefined;
@@ -39,6 +39,11 @@ export async function getSport(slug: string): Promise<Sport | null> {
 /** Every season on the Loop, oldest first, including years without events. */
 export async function getSeasonYears(): Promise<number[]> {
   return sample().years;
+}
+
+/** The season the Loop opens on. */
+export async function getDefaultSeasonYear(): Promise<number> {
+  return SAMPLE_DEFAULT_YEAR;
 }
 
 /** All events, oldest first, in the lightweight form used by the dial, deck and lists. */

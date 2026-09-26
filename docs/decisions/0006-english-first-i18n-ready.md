@@ -21,7 +21,9 @@ There are two kinds of text:
 
 - **Interface text** goes through **next-intl** from the first component. No
   user-facing string is hard-coded in a component. English messages live in
-  `src/i18n/messages/en.json`.
+  `src/i18n/messages/en-GB.json`. The locale is British English (`en-GB`) so dates
+  read day-first ("18 Oct 2025") as they do in Romania, and times use the club's
+  time zone (`Europe/Bucharest`).
 - **Content** uses Payload's field-level localisation, switched on when a second
   language is added. Until then, content fields are single-language.
 - Dates, numbers and times are formatted through the i18n layer

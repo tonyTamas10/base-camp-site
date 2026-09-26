@@ -1,0 +1,35 @@
+.group {
+  display: inline-flex;
+  gap: 2px;
+  padding: 3px;
+  border: 1.5px solid var(--color-line);
+  border-radius: var(--radius-pill);
+  background: rgb(5 10 44 / 20%);
+}
+
+.option {
+  min-height: 38px;
+  padding: 0 14px;
+  border: 0;
+  border-radius: var(--radius-pill);
+  background: transparent;
+  color: var(--color-pale-blue);
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.option:hover {
+  color: var(--color-warm-white);
+}
+
+.option[aria-pressed='true'] {
+  background: var(--color-signal);
+  color: var(--color-midnight);
+}
+
+@media (width < 900px) {
+  .option {
+    padding: 0 11px;
+    font-size: 12.5px;
+  }
+}

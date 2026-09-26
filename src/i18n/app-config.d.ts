@@ -1,5 +1,5 @@
 import type { Locale } from './config';
-import type messages from './messages/en.json';
+import type messages from './messages/en-GB.json';
 
 // Makes translation keys type-checked: t('home.statment') is a compile error.
 declare module 'next-intl' {

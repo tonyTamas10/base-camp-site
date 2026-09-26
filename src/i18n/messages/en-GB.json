@@ -1,0 +1,121 @@
+{
+  "metadata": {
+    "siteName": "Base Camp",
+    "description": "Community sports in Cluj-Napoca: minifootball, football, athletics and sprints."
+  },
+  "brand": {
+    "homeLabel": "Base Camp home",
+    "first": "Base",
+    "second": "Camp",
+    "location": "CLUJ-NAPOCA · RO"
+  },
+  "nav": {
+    "label": "Primary",
+    "skipToContent": "Skip to content",
+    "home": "Home",
+    "events": "Events",
+    "register": "Register",
+    "sponsor": "Become a Sponsor",
+    "contact": "Contact",
+    "allSports": "All sports",
+    "futureSports": "Future sports",
+    "openMenu": "Open menu",
+    "closeMenu": "Close menu"
+  },
+  "prototype": {
+    "label": "Prototype",
+    "explanation": "Names, numbers, results and partners are sample data.",
+    "showcaseEvent": "Showcase event",
+    "designSystem": "Design system"
+  },
+  "footer": {
+    "club": "Base Camp · Cluj-Napoca",
+    "contact": "Contact",
+    "designSystem": "Design system"
+  },
+  "home": {
+    "wordmarkFirst": "Base",
+    "wordmarkSecond": "Camp",
+    "statement": "Local moments.",
+    "statementEmphasis": "One shared line.",
+    "enterLoop": "Enter the Loop",
+    "partnersLabel": "Sponsors and partners"
+  },
+  "events": {
+    "title": "Events",
+    "whenLabel": "When",
+    "when": {
+      "all": "All",
+      "past": "Past",
+      "this-week": "Now",
+      "upcoming": "Next"
+    },
+    "viewLabel": "View",
+    "view": {
+      "deck": "Deck",
+      "list": "List"
+    },
+    "listLabel": "Events in {year}",
+    "futureTitle": "Future sports",
+    "futureBody": "No events yet. New sports join the Loop as the community asks for them.",
+    "suggestSport": "Suggest a sport",
+    "emptyTitle": "No {sport, select, all {} other {{sport} }}events in {year}{status, select, none {} other { marked “{status}”}}",
+    "emptyBody": "The Loop keeps going. Try a neighbouring year or widen the filter.",
+    "nearestYear": "Nearest year with events",
+    "allDates": "Show all dates"
+  },
+  "register": {
+    "eyebrow": "Register",
+    "title": "Pick your next line on the Loop"
+  },
+  "sponsor": {
+    "eyebrow": "Become a sponsor",
+    "title": "Back the people who show up"
+  },
+  "contact": {
+    "eyebrow": "Contact",
+    "title": "Say hello"
+  },
+  "designSystem": {
+    "eyebrow": "Guidelines · v0.1 prototype",
+    "title": "Base Camp design system"
+  },
+  "notFound": {
+    "eyebrow": "404",
+    "title": "Off the Loop",
+    "body": "This page doesn't exist, or it has moved.",
+    "backHome": "Back to the Loop"
+  },
+  "loop": {
+    "label": "Year dial on the Base Camp Loop",
+    "allSports": "all sports",
+    "futureSports": "future sports",
+    "eventCount": "{count, plural, one {# event} other {# events}}",
+    "valueText": "{year}, {count, plural, one {# event} other {# events}}, {sport}",
+    "announcement": "{year}: {count, plural, one {# event} other {# events}}"
+  },
+  "eventStatus": {
+    "past": "Past",
+    "this-week": "This week",
+    "upcoming": "Upcoming"
+  },
+  "eventCard": {
+    "label": "{name}, {year}, {venue}, {count, plural, one {# participant} other {# participants}}",
+    "participants": "{count, plural, one {# participant} other {# participants}}"
+  },
+  "deck": {
+    "roleDescription": "carousel",
+    "label": "Event deck",
+    "keyboardHint": "Event cards. Up and down arrows move through the deck, Enter opens the event.",
+    "previous": "Previous event",
+    "next": "Next event",
+    "open": "Open event",
+    "openLabel": "Open {name} {year}"
+  },
+  "homeDeck": {
+    "summary": "{count, plural, one {# event} other {# events}} · {sport}",
+    "close": "Close deck",
+    "emptyTitle": "No events in {year}",
+    "emptyBody": "The Loop keeps going. Try a neighbouring year."
+  }
+}

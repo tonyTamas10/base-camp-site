@@ -2,11 +2,9 @@ import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import { getTranslations } from 'next-intl/server';
 
-import { SectionHeading } from '@/components/ui/Heading';
 import { FUTURE_SPORTS_SLUG } from '@/domain/sport';
+import { EventsHub } from '@/features/events';
 import { getSport, getSports } from '@/lib/data';
-
-import styles from '../page.module.css';
 
 export async function generateStaticParams() {
   const sports = await getSports();
@@ -29,9 +27,5 @@ export default async function SportEventsPage({ params }: PageProps<'/events/[sp
   const title = await resolveTitle((await params).sport);
   if (!title) notFound();
 
-  return (
-    <div className={styles.hub}>
-      <SectionHeading as="h1">{title}</SectionHeading>
-    </div>
-  );
+  return <EventsHub title={title} />;
 }
