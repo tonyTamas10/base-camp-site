@@ -1,0 +1,65 @@
+.card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  border-radius: 16px;
+  background: var(--color-midnight);
+  color: var(--color-warm-white);
+  box-shadow:
+    0 1px 0 rgb(255 255 255 / 12%) inset,
+    0 40px 80px -30px rgb(3 6 30 / 85%);
+}
+
+.tags {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  z-index: 2;
+  display: flex;
+  gap: 6px;
+}
+
+.poster {
+  position: relative;
+  flex: 1;
+  min-height: 0;
+  overflow: hidden;
+}
+
+.poster svg {
+  position: absolute;
+  inset: 0;
+}
+
+.meta {
+  display: grid;
+  gap: 6px;
+  padding: 14px 16px 16px;
+  border-top: 3px solid var(--accent, var(--color-signal));
+  background: var(--color-midnight);
+}
+
+.name {
+  font-family: var(--font-display);
+  font-size: 26px;
+  font-weight: 800;
+  line-height: 0.95;
+  letter-spacing: 0.01em;
+  text-transform: uppercase;
+  text-wrap: balance;
+}
+
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 4px 14px;
+  color: var(--color-pale-blue);
+  font-size: 13px;
+}
+
+.participants {
+  color: var(--color-warm-white);
+  font-weight: 600;
+}

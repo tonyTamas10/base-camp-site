@@ -1,0 +1,40 @@
+.overlay {
+  position: fixed;
+  top: 96px;
+  right: 16px;
+  bottom: var(--loop-clearance, var(--axis-height));
+  left: calc(var(--nav-width) + 16px);
+  z-index: 13;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.title {
+  font-family: var(--font-display);
+  font-size: 40px;
+  font-weight: 800;
+  line-height: 1;
+  text-transform: uppercase;
+}
+
+.title span {
+  margin-left: 8px;
+  color: var(--color-pale-blue);
+  font-size: 0.6em;
+  font-weight: 500;
+}
+
+@media (width < 900px) {
+  .overlay {
+    top: 76px;
+    left: 16px;
+  }
+
+  .title {
+    font-size: 32px;
+  }
+}

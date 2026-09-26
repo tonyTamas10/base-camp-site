@@ -1,0 +1,11 @@
+.page {
+  position: relative;
+  z-index: 4;
+  padding-left: var(--nav-width);
+}
+
+@media (width < 900px) {
+  .page {
+    padding-top: 64px;
+  }
+}

@@ -1,0 +1,97 @@
+.deck {
+  position: relative;
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  gap: 8px;
+  height: 100%;
+  min-height: 0;
+  perspective: 1500px;
+  perspective-origin: 50% 20%;
+}
+
+/* Cards size themselves from the space available, via container units. */
+.cards {
+  position: relative;
+  grid-row: 2;
+  min-height: 0;
+  container-type: size;
+  outline-offset: 6px;
+  transform-style: preserve-3d;
+  touch-action: none;
+  --card-width: min(100cqw - 24px, min(100cqh, 620px) * 0.72);
+  --card-height: calc(var(--card-width) / 0.72);
+}
+
+@media (width < 900px) {
+  .cards {
+    --card-width: min(100cqw - 24px, 440px, 100cqh / 1.1);
+    --card-height: min(100cqh, var(--card-width) * 1.5);
+  }
+}
+
+.card {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: max(200px, var(--card-width));
+  height: max(260px, var(--card-height));
+  translate: -50% -50%;
+  opacity: var(--card-opacity, 1);
+  filter: brightness(var(--card-brightness, 1));
+  transform: var(--card-transform);
+  transition:
+    transform 620ms var(--ease-release),
+    opacity 380ms ease,
+    filter 380ms ease;
+  will-change: transform;
+}
+
+.front {
+  cursor: pointer;
+}
+
+.instant {
+  transition: none !important;
+}
+
+/* Reduced motion: cards cross-fade in place instead of moving in depth. */
+.cards[data-reduced-motion] .card {
+  transition: opacity 150ms linear !important;
+}
+
+.empty {
+  grid-row: 2;
+  display: grid;
+  place-items: center;
+  min-height: 0;
+  padding: 24px;
+  text-align: center;
+}
+
+.controls {
+  grid-row: 3;
+  display: flex;
+  justify-self: center;
+  align-items: center;
+  gap: 10px;
+  z-index: 5;
+}
+
+.counter {
+  min-width: 74px;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  text-align: center;
+}
+
+.counter b {
+  color: var(--color-signal);
+  font-weight: 500;
+}
+
+@media (width < 900px) {
+  .controls {
+    gap: 6px;
+  }
+}

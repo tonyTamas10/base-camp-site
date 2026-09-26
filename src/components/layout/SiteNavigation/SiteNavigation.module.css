@@ -1,0 +1,250 @@
+/* ---------- desktop: integrated side navigation, no panel ---------- */
+
+.nav {
+  position: fixed;
+  inset: 0 auto 0 0;
+  z-index: 30;
+  display: flex;
+  flex-direction: column;
+  gap: 36px;
+  width: var(--nav-width);
+  padding: 28px 0 28px 28px;
+  transition: opacity 0.45s var(--ease-release);
+}
+
+.list {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin: auto 0;
+  padding: 0 0 0 22px;
+  list-style: none;
+}
+
+/* The vertical line the nav markers sit on. */
+.list::before {
+  content: '';
+  position: absolute;
+  top: -40vh;
+  bottom: -60vh;
+  left: 0;
+  width: 1px;
+  background: var(--color-line);
+}
+
+.list > li {
+  position: relative;
+}
+
+.item {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-height: var(--touch-target);
+  padding: 0;
+  border: 0;
+  background: none;
+  color: var(--color-warm-white);
+  font-family: var(--font-display);
+  font-size: 28px;
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: 0.02em;
+  text-decoration: none;
+  text-transform: uppercase;
+  transition:
+    color var(--duration-fast),
+    transform var(--duration-fast) var(--ease-release);
+}
+
+.item:hover {
+  transform: translateX(4px);
+}
+
+.list:hover .item:not(:hover) {
+  color: rgb(247 247 242 / 60%);
+}
+
+/* Marker on the line; orange for the current section. */
+.item::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: -26px;
+  width: 9px;
+  height: 9px;
+  margin-top: -4.5px;
+  border: 1px solid var(--color-line-strong);
+  border-radius: 50%;
+  background: var(--color-cobalt);
+  transition: all var(--duration-medium) var(--ease-release);
+}
+
+.item[aria-current='page']::before {
+  border-color: var(--color-signal);
+  background: var(--color-signal);
+  box-shadow: 0 0 0 5px rgb(255 91 26 / 20%);
+}
+
+.chevron {
+  transition: transform var(--duration-medium) var(--ease-release);
+}
+
+.item[aria-expanded='true'] .chevron {
+  transform: rotate(90deg);
+}
+
+.subList {
+  display: grid;
+  gap: 2px;
+  margin: 6px 0 10px;
+  padding: 0;
+  list-style: none;
+}
+
+.subList[hidden] {
+  display: none;
+}
+
+.subLink {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  min-height: 36px;
+  padding-right: 20px;
+  color: var(--color-pale-blue);
+  font-size: 15px;
+  font-weight: 500;
+  text-decoration: none;
+  opacity: 0;
+  transform: translateX(-10px);
+  animation: slide-in var(--duration-medium) var(--ease-release) forwards;
+}
+
+.subLink:hover,
+.subLink[aria-current='page'] {
+  color: var(--color-warm-white);
+}
+
+.subLink[aria-current='page'] span::after {
+  content: '';
+  display: inline-block;
+  width: 14px;
+  height: 2px;
+  margin-left: 8px;
+  background: var(--color-signal);
+  vertical-align: middle;
+}
+
+.future {
+  font-style: italic;
+}
+
+@keyframes slide-in {
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.close,
+.topBar {
+  display: none;
+}
+
+/* ---------- phones: top bar and a full-screen menu ---------- */
+
+@media (width < 900px) {
+  .topBar {
+    position: fixed;
+    inset: 0 0 auto;
+    z-index: 31;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: calc(10px + env(safe-area-inset-top, 0px)) 16px 10px;
+    background: linear-gradient(var(--color-cobalt) 40%, rgb(28 46 158 / 0%));
+    transition: opacity 0.45s var(--ease-release);
+  }
+
+  .spacer {
+    flex: 1;
+  }
+
+  .topBarLink {
+    display: inline-flex;
+    align-items: center;
+    min-height: var(--touch-target);
+    padding: 0 12px;
+    border: 1.5px solid var(--color-line);
+    border-radius: var(--radius-pill);
+    font-size: 14px;
+    font-weight: 700;
+    text-decoration: none;
+  }
+
+  .topBarPrimary {
+    border-color: var(--color-signal);
+    background: var(--color-signal);
+    color: var(--color-midnight);
+  }
+
+  .menuButton {
+    display: grid;
+    place-items: center;
+    width: var(--touch-target);
+    height: var(--touch-target);
+    border: 1.5px solid var(--color-line-strong);
+    border-radius: 50%;
+    background: none;
+  }
+
+  .nav {
+    width: 100%;
+    padding: calc(20px + env(safe-area-inset-top, 0px)) 24px 32px;
+    overflow-y: auto;
+    background: var(--color-midnight);
+    transform: translateY(-102%);
+    visibility: hidden;
+    transition:
+      transform var(--duration-slow) var(--ease-sprint),
+      visibility 0s linear var(--duration-slow);
+  }
+
+  .nav[data-open] {
+    z-index: 32;
+    transform: none;
+    visibility: visible;
+    transition: transform var(--duration-slow) var(--ease-release);
+  }
+
+  .close {
+    position: absolute;
+    top: calc(16px + env(safe-area-inset-top, 0px));
+    right: 16px;
+    display: grid;
+  }
+
+  .list {
+    margin: 24px 0 0;
+  }
+
+  .item {
+    min-height: 56px;
+    font-size: 40px;
+  }
+
+  .subLink {
+    min-height: var(--touch-target);
+    font-size: 17px;
+  }
+}
+
+/* While the Loop dial is in use, everything else recedes. */
+:global(html[data-loop-focus]) .nav,
+:global(html[data-loop-focus]) .topBar {
+  opacity: 0.35;
+}

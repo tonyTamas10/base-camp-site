@@ -1,0 +1,41 @@
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  text-decoration: none;
+}
+
+.mark {
+  width: 40px;
+  height: 40px;
+  flex: none;
+}
+
+.name {
+  display: block;
+  font-family: var(--font-display);
+  font-size: 22px;
+  font-weight: 900;
+  line-height: 0.9;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.location {
+  display: block;
+  margin-top: 4px;
+  color: var(--color-pale-blue);
+  font-family: var(--font-mono);
+  font-size: 9px;
+  font-weight: 400;
+  letter-spacing: 0.1em;
+}
+
+.compact .mark {
+  width: 34px;
+  height: 34px;
+}
+
+.compact .name {
+  font-size: 19px;
+}

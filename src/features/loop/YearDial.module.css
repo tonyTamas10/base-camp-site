@@ -1,0 +1,121 @@
+/* The full-viewport layer the dial lives in; only the dial's disc receives pointer input. */
+.loop {
+  position: fixed;
+  inset: 0;
+  z-index: 12;
+  overflow: hidden;
+  outline: none;
+  pointer-events: none;
+  contain: strict;
+}
+
+.band {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 0;
+  height: 0;
+  overflow: hidden;
+  pointer-events: none;
+  will-change: transform;
+}
+
+.loop:focus-visible .band {
+  border-radius: 14px;
+  outline: 2px solid var(--color-signal);
+  outline-offset: -2px;
+}
+
+.canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.labels {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.hitArea {
+  position: absolute;
+  inset: 0;
+  cursor: grab;
+  pointer-events: auto;
+  touch-action: none;
+}
+
+.dragging {
+  cursor: grabbing;
+}
+
+/* Year labels are only ever translated, never rotated, so they stay crisp and cheap to move. */
+.label {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: grid;
+  justify-items: center;
+  gap: 3px;
+  white-space: nowrap;
+  opacity: 0;
+  will-change: transform;
+  backface-visibility: hidden;
+}
+
+.year {
+  padding: 4px 12px;
+  border-radius: var(--radius-pill);
+  color: rgb(247 247 242 / 72%);
+  font-family: var(--font-display);
+  font-size: 26px;
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: 0.02em;
+  transition:
+    color 0.25s,
+    background-color 0.2s,
+    transform 0.25s var(--ease-release);
+}
+
+.count {
+  color: var(--color-pale-blue);
+  font-size: 12px;
+  line-height: 1;
+}
+
+.empty .year {
+  color: rgb(247 247 242 / 38%);
+}
+
+.selected .year {
+  background: var(--color-signal);
+  color: var(--color-midnight);
+  transform: scale(1.14);
+}
+
+.selected .count {
+  color: var(--color-warm-white);
+  transform: translateY(2px);
+}
+
+:global(html[data-loop-focus]) .year {
+  color: var(--color-warm-white);
+}
+
+:global(html[data-loop-focus]) .selected .year {
+  color: var(--color-midnight);
+}
+
+@media (width < 900px) {
+  .year {
+    padding: 3px 10px;
+    font-size: 21px;
+  }
+
+  .count {
+    font-size: 11px;
+  }
+}

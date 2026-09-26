@@ -1,0 +1,171 @@
+.hero {
+  position: absolute;
+  inset: 0 0 var(--axis-height) var(--nav-width);
+  display: grid;
+  align-content: center;
+  padding: 90px var(--gutter) 40px 5vw;
+  pointer-events: none;
+}
+
+.hero > * {
+  pointer-events: auto;
+}
+
+.hero,
+.fragments {
+  transition:
+    opacity 0.45s var(--ease-release),
+    filter var(--duration-medium);
+}
+
+.wordmark {
+  position: relative;
+  width: max-content;
+  max-width: 100%;
+  font-family: var(--font-display);
+  font-size: clamp(64px, min(15.5vw, 21vh), 250px);
+  font-weight: 900;
+  line-height: 0.78;
+  letter-spacing: -0.01em;
+  text-transform: uppercase;
+}
+
+.wordmarkFirst {
+  display: block;
+}
+
+.wordmarkSecond {
+  display: block;
+  padding-left: 0.42em;
+  color: transparent;
+  -webkit-text-stroke: 2px var(--color-warm-white);
+  background: repeating-linear-gradient(
+    180deg,
+    transparent 0 13px,
+    rgb(247 247 242 / 90%) 13px 15px
+  );
+  background-clip: text;
+}
+
+/* The signal lane drawn through the wordmark. */
+.lane {
+  position: absolute;
+  top: 49%;
+  right: -8%;
+  left: -6%;
+  height: 3px;
+  background: var(--color-signal);
+  transform-origin: left;
+  animation: draw-lane 1.4s var(--ease-sprint) 0.3s both;
+}
+
+@keyframes draw-lane {
+  from {
+    transform: scaleX(0);
+  }
+}
+
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  gap: 28px 48px;
+  margin-top: 40px;
+}
+
+.statement {
+  font-size: clamp(20px, 2vw, 28px);
+  font-weight: 500;
+  line-height: 1.4;
+}
+
+.statement em {
+  color: var(--color-pale-blue);
+  font-style: normal;
+}
+
+/* Poster fragments drifting behind the hero. */
+.fragments {
+  position: absolute;
+  top: 12vh;
+  right: -4vw;
+  width: 34vw;
+  max-width: 520px;
+  height: 64vh;
+  pointer-events: none;
+}
+
+.fragment {
+  position: absolute;
+  aspect-ratio: 5 / 7;
+  overflow: hidden;
+  border-radius: 10px;
+  box-shadow: 0 30px 60px -20px rgb(5 10 44 / 70%);
+  animation: drift 14s ease-in-out infinite alternate;
+}
+
+.fragment[data-position='1'] {
+  top: 0;
+  right: 12%;
+  width: 58%;
+  transform: rotate(-7deg);
+  animation-delay: -3s;
+}
+
+.fragment[data-position='2'] {
+  top: 34%;
+  right: -6%;
+  width: 44%;
+  transform: rotate(5deg);
+}
+
+@keyframes drift {
+  to {
+    translate: 0 -14px;
+  }
+}
+
+@media (width < 900px) {
+  .hero {
+    inset: 0 0 var(--axis-height) 0;
+    padding: 130px 20px 40px;
+  }
+
+  .wordmark {
+    font-size: clamp(60px, min(25vw, 14vh), 150px);
+  }
+
+  .wordmarkSecond {
+    -webkit-text-stroke: 1.5px var(--color-warm-white);
+    background: repeating-linear-gradient(
+      180deg,
+      transparent 0 9px,
+      rgb(247 247 242 / 90%) 9px 10.5px
+    );
+    background-clip: text;
+  }
+
+  .row {
+    margin-top: 28px;
+  }
+
+  .fragments {
+    top: auto;
+    right: -22vw;
+    bottom: calc(var(--axis-height) + 10px);
+    width: 60vw;
+    height: 36vh;
+    opacity: 0.55;
+  }
+}
+
+:global(html[data-loop-focus]) .hero,
+:global(html[data-loop-focus]) .fragments {
+  opacity: 0.35;
+}
+
+:global(html[data-deck-open]) .hero,
+:global(html[data-deck-open]) .fragments {
+  opacity: 0.08;
+  filter: blur(3px);
+}

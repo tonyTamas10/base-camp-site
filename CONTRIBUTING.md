@@ -87,7 +87,7 @@ this, so a wrong-direction import fails lint with an explanation.
 ### Text and translations
 
 - No user-facing text is hard-coded in components. Add it to
-  `src/i18n/messages/en.json` and use `useTranslations` (or `getTranslations` in
+  `src/i18n/messages/en-GB.json` and use `useTranslations` (or `getTranslations` in
   async server code). Keys are type-checked, so typos fail the build.
 - Format dates and numbers through next-intl, not by hand.
 

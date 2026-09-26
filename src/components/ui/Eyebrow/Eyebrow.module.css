@@ -1,0 +1,19 @@
+/* Colour follows --eyebrow-color so light "paper" sections can switch it. */
+.eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 0 0 14px;
+  color: var(--eyebrow-color, var(--color-pale-blue));
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.eyebrow::before {
+  content: '';
+  width: 22px;
+  height: 2px;
+  background: var(--color-signal);
+}

@@ -1,0 +1,18 @@
+.page {
+  position: relative;
+  z-index: 4;
+  min-height: 100vh;
+  padding-left: var(--nav-width);
+}
+
+.actions {
+  max-width: var(--content-max-width);
+  margin: 0 auto;
+  padding: 0 var(--gutter) var(--space-9);
+}
+
+@media (width < 900px) {
+  .page {
+    padding-top: 64px;
+  }
+}

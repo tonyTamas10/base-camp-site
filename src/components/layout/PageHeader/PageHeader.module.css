@@ -1,0 +1,12 @@
+.header {
+  max-width: var(--content-max-width);
+  margin: 0 auto;
+  padding: clamp(48px, 8vw, 110px) var(--gutter) 32px;
+}
+
+.lede {
+  max-width: 36ch;
+  margin: 0;
+  font-size: clamp(18px, 1.6vw, 22px);
+  line-height: 1.45;
+}
