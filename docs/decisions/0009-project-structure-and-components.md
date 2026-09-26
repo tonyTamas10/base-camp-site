@@ -31,6 +31,7 @@ src/
     posters/                 procedural poster art
     sponsors/                partner marks and the sponsor ribbon
     forms/                   registration, sponsor and contact forms
+  cms/                       Payload schema: collections, blocks, access rules, hooks (ADR 0003)
   lib/
     data/                    data-access layer: the only code that knows where data comes from
     format/                  dates, numbers (through i18n)

@@ -11,9 +11,8 @@ test.describe('registration', () => {
     await page.getByLabel('Email').fill('ana@example.com');
     await page.getByRole('button', { name: 'Send registration' }).click();
 
-    await expect(page.getByRole('status')).toContainText(
-      'In the live site, Ana Pop would get a confirmation for Student Cup.',
-    );
+    // The wording depends on whether submissions are stored; both name the person and event.
+    await expect(page.getByRole('status')).toContainText(/Ana Pop.*Student Cup/);
   });
 
   test('explains problems and focuses the first one', async ({ page }) => {
@@ -43,7 +42,7 @@ test('contact and sponsor forms confirm a valid message', async ({ page }) => {
   await page.getByLabel('Contact email').fill('hi@clujcoffee.ro');
   await page.getByLabel('What would you like to support?').selectOption('kit');
   await page.getByRole('button', { name: 'Start the conversation' }).click();
-  await expect(page.getByRole('status')).toContainText('the Base Camp team would reply');
+  await expect(page.getByRole('status')).toContainText(/Base Camp team/);
 });
 
 test.describe('without JavaScript', () => {

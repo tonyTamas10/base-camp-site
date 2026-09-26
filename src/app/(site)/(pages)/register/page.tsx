@@ -4,7 +4,7 @@ import { getTranslations } from 'next-intl/server';
 import { PageHeader } from '@/components/layout/PageHeader';
 import { SiteFooter } from '@/components/layout/SiteFooter';
 import { RegistrationForm } from '@/features/forms';
-import { getOpenEvents, getSports, isUsingSampleData } from '@/lib/data';
+import { getOpenEvents, getSports, areSubmissionsStored } from '@/lib/data';
 import { submitRegistration } from '@/lib/forms/actions';
 
 import styles from '../forms.module.css';
@@ -16,11 +16,11 @@ export async function generateMetadata(): Promise<Metadata> {
 
 export default async function RegisterPage({ searchParams }: PageProps<'/register'>) {
   const { sport, event } = await searchParams;
-  const [t, events, sports, isPrototype] = await Promise.all([
+  const [t, events, sports, submissionsStored] = await Promise.all([
     getTranslations('register'),
     getOpenEvents(),
     getSports(),
-    isUsingSampleData(),
+    areSubmissionsStored(),
   ]);
   const selected =
     typeof sport === 'string' && typeof event === 'string' ? `${sport}/${event}` : undefined;
@@ -43,7 +43,7 @@ export default async function RegisterPage({ searchParams }: PageProps<'/registe
           sports={sports}
           selected={selected}
           action={submitRegistration}
-          isPrototype={isPrototype}
+          isPrototype={!submissionsStored}
         />
       </div>
       <SiteFooter />

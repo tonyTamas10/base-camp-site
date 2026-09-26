@@ -14,12 +14,41 @@ The reasoning behind each convention is in [docs/decisions](docs/decisions/READM
    ```
    If that needs admin rights, use the standalone installer from
    [pnpm.io/installation](https://pnpm.io/installation) instead.
-3. **Install and run:**
+3. **Install and configure:**
    ```bash
    pnpm install
+   cp .env.example .env.local
+   ```
+   Set `PAYLOAD_SECRET` in `.env.local` to any long random string, and
+   `SEED_ADMIN_EMAIL` / `SEED_ADMIN_PASSWORD` for your local admin account.
+4. **Start the database** in its own terminal and leave it running
+   ([ADR 0011](docs/decisions/0011-database-workflow.md)):
+   ```bash
+   pnpm db
+   ```
+5. **Load the sample content** (once) and **run the site:**
+   ```bash
+   pnpm seed
    pnpm dev
    ```
-4. **For end-to-end tests,** install the browser once: `pnpm exec playwright install chromium`.
+   The site is at http://localhost:3000 and the admin at http://localhost:3000/admin.
+6. **For end-to-end tests,** install the browser once: `pnpm exec playwright install chromium`.
+
+**Only working on the UI?** Leave `DATABASE_URI` unset and skip steps 4–5: the site
+runs on generated sample content (there is no admin in that mode).
+
+### Changing the CMS schema
+
+Collections live in `src/cms/`. Locally, Payload applies your changes to the database
+automatically. Before opening the PR, create a migration and commit it:
+
+```bash
+pnpm migrate:create add-event-sponsor-tier
+pnpm generate:types
+```
+
+CI fails if the collections changed without a migration. `pnpm seed:reset` reloads the
+sample content into your local database if you need a clean slate.
 
 Recommended VS Code extensions are listed in `.vscode/extensions.json`. With
 them, files are formatted and lint-fixed on save.

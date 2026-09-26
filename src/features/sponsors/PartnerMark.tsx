@@ -31,6 +31,14 @@ export function PartnerMark({ partner, color, baseHeight = 34 }: PartnerMarkProp
     );
   }
 
+  if (partner.logo.kind === 'wordmark') {
+    return (
+      <span className={styles.wordmark} style={{ color, fontSize: baseHeight * 0.6 }}>
+        {partner.name}
+      </span>
+    );
+  }
+
   const placeholder = PLACEHOLDER_MARKS[partner.logo.variant % PLACEHOLDER_MARKS.length]!;
   const size = opticalSize(placeholder.width, placeholder.height, baseHeight);
   return (

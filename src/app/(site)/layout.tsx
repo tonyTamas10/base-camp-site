@@ -10,6 +10,12 @@ import { getShowcaseEvent, getSports, isUsingSampleData } from '@/lib/data';
 import { fontVariables } from '@/styles/fonts';
 import '@/styles/globals.css';
 
+/**
+ * Pages are pre-rendered and regenerated when content changes. They also refresh hourly, because
+ * an event's status (upcoming, this week, past) changes with the calendar, not with edits.
+ */
+export const revalidate = 3600;
+
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getTranslations('metadata');
   return {
