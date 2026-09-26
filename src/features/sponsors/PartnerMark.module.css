@@ -1,0 +1,10 @@
+.mark {
+  display: inline-flex;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.mark svg,
+.mark img {
+  display: block;
+}
