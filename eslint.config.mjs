@@ -90,5 +90,10 @@ export default defineConfig([
       ],
     },
   },
+  {
+    // Tests may use the sample dataset as fixtures, wherever they live.
+    files: ['**/*.test.{ts,tsx}'],
+    rules: { 'no-restricted-imports': 'off' },
+  },
   prettier,
 ]);

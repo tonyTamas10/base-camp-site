@@ -1,5 +1,6 @@
-import AxeBuilder from '@axe-core/playwright';
 import { expect, test } from '@playwright/test';
+
+import { expectNoA11yViolations, gotoSettled } from './support/a11y';
 
 test.describe('the Loop on home', () => {
   test('turns with the keyboard and opens a year as a deck', async ({ page }) => {
@@ -27,14 +28,11 @@ test.describe('the Loop on home', () => {
   });
 
   test('has no detectable accessibility violations with the deck open', async ({ page }) => {
-    await page.goto('/');
+    await gotoSettled(page, '/');
     await page.getByRole('slider').focus();
     await page.keyboard.press('Enter');
     await expect(page.getByRole('region', { name: 'Event deck' })).toBeVisible();
-    const results = await new AxeBuilder({ page })
-      .withTags(['wcag2a', 'wcag2aa', 'wcag21aa'])
-      .analyze();
-    expect(results.violations).toEqual([]);
+    await expectNoA11yViolations(page);
   });
 });
 

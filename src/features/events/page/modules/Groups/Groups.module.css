@@ -1,0 +1,85 @@
+.tables {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(20px, 3vw, 40px);
+}
+
+.wrap {
+  overflow-x: auto;
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
+  font-variant-numeric: tabular-nums;
+}
+
+.table caption {
+  padding-bottom: 8px;
+  font-family: var(--font-display);
+  font-size: 28px;
+  font-weight: 800;
+  text-align: left;
+  text-transform: uppercase;
+}
+
+.table thead th {
+  padding: 8px 6px;
+  border-bottom: 1.5px solid currentcolor;
+  color: var(--section-muted);
+  font-family: var(--font-mono);
+  font-size: 10px;
+  font-weight: 400;
+  letter-spacing: 0.08em;
+  text-align: right;
+  text-transform: uppercase;
+}
+
+.table abbr {
+  text-decoration: none;
+}
+
+.table td,
+.table tbody th {
+  padding: 11px 6px;
+  border-bottom: 1px solid var(--section-line);
+  font-weight: 400;
+  text-align: right;
+}
+
+.table :is(td, th):nth-child(-n + 2) {
+  text-align: left;
+}
+
+.qualified :is(td, th) {
+  font-weight: 700;
+}
+
+.qualified td:first-child {
+  box-shadow: inset 3px 0 0 var(--color-signal);
+}
+
+.points {
+  font-weight: 800;
+}
+
+/* Rows resolve from blurred and compressed as the table is revealed. */
+.table tbody tr {
+  transition:
+    filter 0.7s var(--ease-release),
+    transform 0.7s var(--ease-release),
+    opacity 0.7s;
+}
+
+.wrap[data-reveal='pending'] tbody tr {
+  opacity: 0.3;
+  filter: blur(6px);
+  transform: scaleY(0.6);
+}
+
+@media (width < 900px) {
+  .tables {
+    grid-template-columns: 1fr;
+  }
+}

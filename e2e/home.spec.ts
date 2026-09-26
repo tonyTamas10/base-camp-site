@@ -1,5 +1,6 @@
-import AxeBuilder from '@axe-core/playwright';
 import { expect, test } from '@playwright/test';
+
+import { expectNoA11yViolations, gotoSettled } from './support/a11y';
 
 test.describe('home page', () => {
   test('shows the Base Camp wordmark', async ({ page }) => {
@@ -10,12 +11,7 @@ test.describe('home page', () => {
   });
 
   test('has no detectable accessibility violations', async ({ page }) => {
-    await page.goto('/');
-
-    const results = await new AxeBuilder({ page })
-      .withTags(['wcag2a', 'wcag2aa', 'wcag21aa'])
-      .analyze();
-
-    expect(results.violations).toEqual([]);
+    await gotoSettled(page, '/');
+    await expectNoA11yViolations(page);
   });
 });

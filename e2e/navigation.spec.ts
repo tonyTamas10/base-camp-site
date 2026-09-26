@@ -1,7 +1,6 @@
-import AxeBuilder from '@axe-core/playwright';
 import { expect, test } from '@playwright/test';
 
-const WCAG_TAGS = ['wcag2a', 'wcag2aa', 'wcag21aa'];
+import { expectNoA11yViolations, gotoSettled } from './support/a11y';
 
 test.describe('site navigation', () => {
   test('reaches every section from the navigation', async ({ page, isMobile }) => {
@@ -39,9 +38,8 @@ test.describe('site navigation', () => {
 
   for (const path of ['/events', '/register', '/events/minifootball/autumn-student-cup-2025']) {
     test(`${path} has no detectable accessibility violations`, async ({ page }) => {
-      await page.goto(path);
-      const results = await new AxeBuilder({ page }).withTags(WCAG_TAGS).analyze();
-      expect(results.violations).toEqual([]);
+      await gotoSettled(page, path);
+      await expectNoA11yViolations(page);
     });
   }
 });

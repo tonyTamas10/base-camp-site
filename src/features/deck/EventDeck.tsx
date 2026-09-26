@@ -22,6 +22,7 @@ import type { Sport } from '@/domain/sport';
 import { cx } from '@/lib/cx';
 import { useMediaQuery } from '@/lib/hooks/useMediaQuery';
 import { usePrefersReducedMotion } from '@/lib/hooks/usePrefersReducedMotion';
+import { eventHref } from '@/lib/routes';
 
 import {
   depthOf,
@@ -59,9 +60,6 @@ const TAP_TOLERANCE = 6;
 const WHEEL_THRESHOLD = 40;
 /** A wheel gesture ends after this long without events; one gesture advances one card. */
 const WHEEL_GESTURE_GAP_MS = 160;
-
-export const eventHref = (event: EventSummary) =>
-  `/events/${event.sportSlug}/${event.slug}` as const;
 
 type Phase = 'entering' | 'arriving' | 'idle';
 
@@ -246,10 +244,11 @@ export function EventDeck({
         <div className={styles.empty}>{empty}</div>
       ) : (
         // Arrow-key shortcut layer over the cards; the buttons below remain the accessible controls.
-        // eslint-disable-next-line jsx-a11y/no-static-element-interactions
+        // eslint-disable-next-line jsx-a11y/no-noninteractive-element-interactions
         <div
           ref={cardsRef}
           className={styles.cards}
+          role="group"
           // eslint-disable-next-line jsx-a11y/no-noninteractive-tabindex
           tabIndex={0}
           aria-label={t('keyboardHint')}

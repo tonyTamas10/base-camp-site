@@ -1,0 +1,74 @@
+.days {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: clamp(24px, 4vw, 56px);
+}
+
+.dayTitle {
+  margin: 0 0 10px;
+  font-family: var(--font-display);
+  font-size: 32px;
+  line-height: 1;
+  text-transform: uppercase;
+}
+
+.dayTitle small {
+  margin-left: 10px;
+  color: var(--section-muted);
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.08em;
+}
+
+.slots ol {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.slot {
+  position: relative;
+  display: grid;
+  grid-template-columns: 72px 1fr auto;
+  align-items: center;
+  gap: 16px;
+  padding: 14px 0;
+  border-top: 1px solid var(--section-line);
+}
+
+/* A short signal line runs in along each slot as the schedule is revealed. */
+.slot::before {
+  content: '';
+  position: absolute;
+  top: -1px;
+  left: 0;
+  width: 40px;
+  height: 2px;
+  background: var(--color-signal);
+  transition: width 0.8s var(--ease-sprint);
+}
+
+.slots[data-reveal='pending'] .slot::before {
+  width: 0;
+}
+
+.time {
+  font-family: var(--font-mono);
+  font-size: 13px;
+  font-variant-numeric: tabular-nums;
+}
+
+.title {
+  font-weight: 600;
+}
+
+.detail {
+  color: var(--section-muted);
+  font-size: 13px;
+}
+
+@media (width < 900px) {
+  .days {
+    grid-template-columns: 1fr;
+  }
+}

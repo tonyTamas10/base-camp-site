@@ -1,0 +1,35 @@
+.teams ul {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.team {
+  display: grid;
+  align-content: start;
+  gap: 12px;
+  min-height: 150px;
+  padding: 16px;
+  border: 1px solid var(--section-line);
+  border-radius: 12px;
+  background: rgb(5 10 44 / 25%);
+  font-size: 16px;
+  line-height: 1.2;
+  transition:
+    opacity 0.8s ease,
+    transform 0.9s var(--ease-release);
+}
+
+.teams[data-reveal='pending'] .team {
+  opacity: 0;
+  transform: translateY(28px);
+}
+
+@media (width < 900px) {
+  .teams ul {
+    grid-template-columns: 1fr 1fr;
+  }
+}
