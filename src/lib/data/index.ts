@@ -16,6 +16,7 @@ import {
 import type { Partner } from '@/domain/partner';
 import type { Sport } from '@/domain/sport';
 
+import { HERO_POSTER_EVENT_IDS, SHOWCASE_EVENT_ID } from './sample/content';
 import { generateSampleDataset, type SampleDataset } from './sample/generate';
 
 let dataset: SampleDataset | undefined;
@@ -77,4 +78,18 @@ export async function getPartners(): Promise<Partner[]> {
 /** Whether the site is showing generated placeholder content (drives the "Prototype" badge). */
 export async function isUsingSampleData(): Promise<boolean> {
   return true;
+}
+
+/** An event that shows off the event page well, linked from the prototype badge. */
+export async function getShowcaseEvent(): Promise<EventSummary | null> {
+  const showcase = sample().events.find((event) => event.id === SHOWCASE_EVENT_ID);
+  return showcase ? toSummary(showcase) : null;
+}
+
+/** Past events whose posters decorate the home hero. */
+export async function getHeroPosterEvents(): Promise<EventSummary[]> {
+  return HERO_POSTER_EVENT_IDS.flatMap((id) => {
+    const event = sample().events.find((candidate) => candidate.id === id);
+    return event ? [toSummary(event)] : [];
+  });
 }

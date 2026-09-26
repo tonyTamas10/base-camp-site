@@ -149,3 +149,6 @@ export const LAST_INITIALS = 'ABCDFGHIMNOPRSȘTȚVZ';
 export const SHOWCASE_EVENT_ID = 'mf-2025-1';
 
 export const PLACEHOLDER_PARTNER_COUNT = 8;
+
+/** Past events whose posters drift behind the home hero. */
+export const HERO_POSTER_EVENT_IDS = ['mf-2024-3', 'sp-2025-2', 'at-2023-1'] as const;

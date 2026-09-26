@@ -1,0 +1,34 @@
+.button {
+  display: grid;
+  place-items: center;
+  flex: none;
+  border: 1.5px solid var(--color-line-strong);
+  border-radius: 50%;
+  background: rgb(5 10 44 / 25%);
+  color: var(--color-warm-white);
+  transition:
+    background var(--duration-fast),
+    color var(--duration-fast),
+    border-color var(--duration-fast);
+}
+
+.regular {
+  width: var(--touch-target-primary);
+  height: var(--touch-target-primary);
+}
+
+.small {
+  width: var(--touch-target);
+  height: var(--touch-target);
+}
+
+.button:hover {
+  border-color: var(--color-warm-white);
+  background: var(--color-warm-white);
+  color: var(--color-midnight);
+}
+
+.button:disabled {
+  opacity: 0.35;
+  pointer-events: none;
+}

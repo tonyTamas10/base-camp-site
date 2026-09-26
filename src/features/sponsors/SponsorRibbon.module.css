@@ -1,0 +1,72 @@
+.ribbon {
+  position: absolute;
+  top: 26px;
+  right: 0;
+  left: var(--nav-width);
+  height: 56px;
+  overflow: hidden;
+  mask-image: linear-gradient(90deg, transparent, #000 10%, #000 90%, transparent);
+  transition:
+    opacity 0.45s var(--ease-release),
+    filter var(--duration-medium);
+}
+
+.track {
+  display: flex;
+  align-items: center;
+  width: max-content;
+  height: 100%;
+  animation: scroll 60s linear infinite;
+}
+
+.ribbon:hover .track,
+.ribbon:focus-within .track {
+  animation-play-state: paused;
+}
+
+.set {
+  display: flex;
+  align-items: center;
+  gap: 72px;
+  padding-right: 72px;
+  opacity: 0.9;
+}
+
+@keyframes scroll {
+  to {
+    transform: translate3d(-50%, 0, 0);
+  }
+}
+
+@media (width < 900px) {
+  .ribbon {
+    top: 66px;
+    left: 0;
+    height: 48px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ribbon {
+    mask-image: none;
+  }
+
+  .track {
+    flex-wrap: wrap;
+    width: auto;
+    animation: none;
+  }
+
+  .set[aria-hidden='true'] {
+    display: none;
+  }
+}
+
+:global(html[data-loop-focus]) .ribbon {
+  opacity: 0.35;
+}
+
+:global(html[data-deck-open]) .ribbon {
+  opacity: 0.08;
+  filter: blur(3px);
+}

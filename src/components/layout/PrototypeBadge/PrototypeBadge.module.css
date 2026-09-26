@@ -1,0 +1,87 @@
+.badge {
+  position: fixed;
+  bottom: calc(20px + env(safe-area-inset-bottom, 0px));
+  left: 28px;
+  z-index: 35;
+  font-size: 13px;
+  transition: opacity 0.45s var(--ease-release);
+}
+
+.summary {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 32px;
+  padding: 6px 12px;
+  border: 1px dashed var(--color-line-strong);
+  border-radius: var(--radius-pill);
+  background: rgb(5 10 44 / 40%);
+  color: var(--color-pale-blue);
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  list-style: none;
+  cursor: pointer;
+}
+
+.summary::-webkit-details-marker {
+  display: none;
+}
+
+.summary::before {
+  content: '';
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--color-signal);
+}
+
+.body {
+  position: absolute;
+  bottom: 44px;
+  left: 0;
+  display: grid;
+  gap: 8px;
+  width: 230px;
+  padding: 14px 16px;
+  border-radius: 14px;
+  background: var(--color-midnight);
+  box-shadow: 0 20px 40px -10px rgb(0 0 0 / 50%);
+}
+
+.body p {
+  margin: 0 0 4px;
+  color: var(--color-pale-blue);
+  font-size: 13px;
+  line-height: 1.4;
+}
+
+.body a {
+  display: flex;
+  align-items: center;
+  min-height: 32px;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.body a:hover {
+  color: var(--color-signal);
+}
+
+:global(html[data-loop-focus]) .badge {
+  opacity: 0.3;
+}
+
+@media (width < 900px) {
+  .badge {
+    right: 12px;
+    bottom: calc(10px + env(safe-area-inset-bottom, 0px));
+    left: auto;
+  }
+
+  .body {
+    right: 0;
+    left: auto;
+  }
+}

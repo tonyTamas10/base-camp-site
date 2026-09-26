@@ -12,3 +12,6 @@ export interface Sport {
   /** Players per team; only meaningful for team sports. */
   squadSize?: number;
 }
+
+/** Reserved slug for the "Future sports" entry, which invites suggestions for new sports. */
+export const FUTURE_SPORTS_SLUG = 'future';

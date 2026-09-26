@@ -1,0 +1,9 @@
+.section {
+  margin: 0 0 24px;
+  font-family: var(--font-display);
+  font-size: clamp(44px, 6vw, 88px);
+  font-weight: 900;
+  line-height: 0.88;
+  text-transform: uppercase;
+  text-wrap: balance;
+}
