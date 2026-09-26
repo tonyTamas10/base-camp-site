@@ -26,6 +26,9 @@ There are two kinds of text:
   time zone (`Europe/Bucharest`).
 - **Content** uses Payload's field-level localisation, switched on when a second
   language is added. Until then, content fields are single-language.
+- **Reference documentation** such as the design-system page is English-only content kept in
+  its feature (`features/design-system/content.ts`), not interface text. Its readers are the
+  people building the site; its labels and navigation still go through next-intl.
 - Dates, numbers and times are formatted through the i18n layer
   (`Intl`-based), not by hand as in the prototype.
 - Routes are prepared for a locale segment. It stays hidden while English is the

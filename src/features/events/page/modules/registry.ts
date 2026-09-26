@@ -55,10 +55,13 @@ export const EVENT_MODULES: Record<EventModuleType, ModuleDefinition> = {
   related: { component: Related },
 };
 
+/** Whether a module can appear on events of this kind. */
+export function moduleFitsKind(type: EventModuleType, kind: SportKind): boolean {
+  const onlyFor = EVENT_MODULES[type].onlyFor;
+  return !onlyFor || onlyFor === kind;
+}
+
 /** The event's modules that can actually render, in the order the editor chose. */
 export function applicableModules(event: EventDetail): EventModuleType[] {
-  return event.modules.filter((type) => {
-    const definition = EVENT_MODULES[type];
-    return !definition.onlyFor || definition.onlyFor === event.competition.kind;
-  });
+  return event.modules.filter((type) => moduleFitsKind(type, event.competition.kind));
 }

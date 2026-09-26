@@ -1,0 +1,93 @@
+.form {
+  display: grid;
+  gap: 18px;
+  max-width: 640px;
+}
+
+.fieldset {
+  display: grid;
+  gap: 8px;
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+.legend {
+  margin-bottom: 6px;
+  padding: 0;
+  color: var(--color-pale-blue);
+  font-family: var(--font-mono);
+  font-size: 10.5px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.option {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  gap: 14px;
+  padding: 14px 16px;
+  border: 1.5px solid var(--color-line);
+  border-radius: 14px;
+  cursor: pointer;
+  transition:
+    border-color var(--duration-fast),
+    background var(--duration-fast);
+}
+
+.option:hover {
+  border-color: var(--color-warm-white);
+}
+
+.option:has(input:checked) {
+  border-color: var(--color-signal);
+  background: rgb(255 91 26 / 10%);
+}
+
+.option input {
+  width: 18px;
+  height: 18px;
+  accent-color: var(--color-signal);
+}
+
+.option b {
+  display: block;
+}
+
+.option small {
+  color: var(--color-pale-blue);
+}
+
+.fieldError {
+  color: var(--color-signal-hover);
+  font-size: 13px;
+}
+
+.sent {
+  display: grid;
+  gap: 6px;
+  max-width: 640px;
+  padding: 22px;
+  border: 1.5px solid var(--color-signal);
+  border-radius: 16px;
+  outline: none;
+}
+
+.sent b {
+  font-family: var(--font-display);
+  font-size: 30px;
+  text-transform: uppercase;
+}
+
+.honeypot {
+  position: absolute;
+  left: -10000px;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+
+.empty {
+  color: var(--color-pale-blue);
+}

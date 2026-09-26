@@ -1,0 +1,62 @@
+/* Shared layout for the form pages (register, sponsor, contact). */
+.body {
+  max-width: var(--content-max-width);
+  margin: 0 auto;
+  padding: 0 var(--gutter) var(--space-9);
+}
+
+.twoColumns {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: start;
+  gap: clamp(24px, 5vw, 72px);
+}
+
+.ways {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.ways li {
+  padding: 14px 0 0;
+  border-top: 2px solid var(--color-warm-white);
+}
+
+.ways b {
+  display: block;
+  font-family: var(--font-display);
+  font-size: 26px;
+  line-height: 1;
+  text-transform: uppercase;
+}
+
+.ways p {
+  margin: 6px 0 0;
+  color: var(--color-pale-blue);
+  font-size: 15px;
+}
+
+.aside {
+  display: grid;
+  align-content: start;
+  gap: 8px;
+}
+
+.asideLabel {
+  color: var(--color-pale-blue);
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+@media (width < 900px) {
+  .twoColumns,
+  .ways {
+    grid-template-columns: 1fr;
+  }
+}
