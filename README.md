@@ -9,13 +9,13 @@ site's navigation and its timeline.
 The site is being rebuilt from a single-file prototype into a production
 Next.js application, in four phases ([ADR 0007](docs/decisions/0007-migration-phases.md)):
 
-1. **Foundation**: tooling, CI, design tokens, i18n, decision records. ← _current_
-2. **Port the public site** to React components, on typed sample data.
-3. **Admin and database** with Payload CMS and Postgres.
+1. **Foundation**: tooling, CI, design tokens, i18n, decision records. ✓
+2. **Port the public site** to React components, on typed sample data. ✓
+3. **Admin and database** with Payload CMS and Postgres. ← _current_
 4. **Forms and launch readiness.**
 
-The original prototype is in [`prototype/`](prototype/README.md). Open
-`prototype/index.html` in a browser to see the target look and behaviour.
+The original single-file prototype was retired once the rebuild matched it. It is in Git
+history (commit `3add57f`) if you ever need the reference.
 
 ## Quick start
 
@@ -49,4 +49,19 @@ in phase 3.
 
 - [Architecture decisions](docs/decisions/README.md): every significant decision, with the reasoning behind it.
 - [Contributing](CONTRIBUTING.md): setup, workflow and code conventions.
-- The design system (colours, type, motion, components) will live at `/design-system`, ported from the prototype.
+- The design system (colours, type, motion, components, event modules) lives on the site at
+  `/design-system`, generated partly from the code so it stays current.
+
+## Where things are
+
+| Path                   | What                                                                                                   |
+| ---------------------- | ------------------------------------------------------------------------------------------------------ |
+| `src/app/`             | Routes. `(loop)` holds home and the events hub (they share the dial); `(pages)` holds scrolling pages. |
+| `src/features/loop/`   | The Base Camp Loop: dial geometry, physics, canvas painting, controller, shared state.                 |
+| `src/features/deck/`   | The 3D event deck and event cards.                                                                     |
+| `src/features/events/` | Events hub and the modular event page (`page/modules/registry.ts`).                                    |
+| `src/features/forms/`  | Registration, sponsor and contact forms.                                                               |
+| `src/domain/`          | Types and pure rules: events, standings, rankings, dates.                                              |
+| `src/lib/data/`        | Data-access layer, the only code that knows where content comes from.                                  |
+| `src/lib/forms/`       | Form validation and server actions.                                                                    |
+| `src/styles/`          | Design tokens, fonts, global styles.                                                                   |
